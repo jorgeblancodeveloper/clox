@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://montaycabe.com/ -->
+<html lang="es">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta content="IE=edge" http-equiv="X-UA-Compatible">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta name="theme-color" content="#008000"/>
+        <link rel="manifest" href="js/manifest.json">
+      <link rel="stylesheet" media="screen" href="css/site.css">
+      <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+      <script src="js/js.js"></script>
+   </head>
+   <body>
+      <div id="clock">
+          <div id="rounds">4</div>
+         <h1 id="counter">GO</h1>
+         <div class="float_boton">Pausa</div>
+      </div>
+      <div class="close"><img src="img/close.png"></div>
+      <div id="wrap">
+         <div id="main">
+         <div id="button_go"><h1>GO</h1></div>
+         <div class="botonera">
+            <div class="row_buttons" id="asaltos">
+               <div class="boton" data-value="-1">-</div>
+               <h2>Asaltos </h2>
+               <div class="boton" data-value="1">+</div>
+            </div>
+            <div class="row_buttons"  id="tiempo_asaltos">
+               <div class="boton" data-value="-1">-</div>
+               <h2>tiempo asaltos</h2>
+               <div class="boton" data-value="1">+</div>
+            </div>
+            <div class="row_buttons" id="tiempo_descanso">
+               <div class="boton" data-value="-1">-</div>
+               <h2>descanso</h2>
+               <div class="boton" data-value="1">+</div>
+            </div>
+            <div class="row_buttons" id="preaviso">
+               <div class="boton" data-value="-1">-</div>
+               <h2>Asaltos</h2>
+               <div class="boton" data-value="1">+</div>
+            </div>
+            <div class="row_buttons">
+               <div class="boton icono" id="config"><div class="img_icon"></div></div>
+               <div class="boton icono" id="sound"><div class="img_icon"></div></div>
+               <div class="boton icono" id="trainer"><div class="img_icon"></div></div>
+               <div class="boton icono" id="test"><div class="img_icon"></div></div>
+            </div>
+         </div>
+</div>
+
+         <div id="panel_config">
+            <div class="info">Info config</div>
+            <div class="botonera">
+            <div class="row_buttons" id="asaltos">
+               <div class="boton" data-value="-1">-</div>
+               <h2>Asaltos </h2>
+               <div class="boton" data-value="1">+</div>
+            </div>
+            <div class="row_buttons"  id="tiempo_asaltos">
+               <div class="boton" data-value="-1">-</div>
+               <h2>tiempo asaltos</h2>
+               <div class="boton" data-value="1">+</div>
+            </div>
+            <div class="row_buttons" id="tiempo_descanso">
+               <div class="boton" data-value="-1">-</div>
+               <h2>descanso</h2>
+               <div class="boton" data-value="1">+</div>
+            </div>
+            </div>
+         </div>
+      </div>
+       <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('js/sw.js')
+          .then(function() {
+                console.log('Service Worker Registered');
+          });
+      }
+    </script>
+   </body>
+</html>
