@@ -54,6 +54,8 @@ h2 {
     overflow:hidden;
 	max-width:450px;
 	margin:auto;
+	position:absolute
+	bottom:0;
 }
 .info{
     flex:2;
@@ -82,13 +84,13 @@ h2 {
 #wrap, .botonera {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    /* height: 90vh; */
     align-items: stretch;
     width: 100%;
     flex: 2;
-    position: absolute;
+    /* position: absolute; */
     /* overflow: hidden; */
-    bottom: 0;
+    /* bottom: 0; */
 }
 
 #button_go{
