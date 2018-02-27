@@ -56,6 +56,7 @@ h2 {
 	margin:auto;
 	position:absolute
 	bottom:0;
+	height:90vh;
 }
 .info{
     flex:2;
