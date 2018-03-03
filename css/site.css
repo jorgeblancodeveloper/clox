@@ -37,7 +37,8 @@ body {
     font-family: 'Share Tech Mono';
     font-weight: bold;
     text-shadow: 0 0 12px #0e3f71;
-	    background: #000;
+    height: 100vh;
+    background: #437DB7;
 }
 
 h1 {
@@ -49,15 +50,6 @@ h2 {
     font-size: 1.5em;
 }
 
-#wrap {
-    background: linear-gradient(135deg, #1e5799 0%,#7db9e8 100%);
-    overflow:hidden;
-	max-width:450px;
-	margin:auto;
-	position:absolute
-	bottom:0;
-	height:90vh;
-}
 .info{
     flex:2;
     font-size: 2em;
@@ -85,17 +77,25 @@ h2 {
 #wrap, .botonera {
     display: flex;
     flex-direction: column;
-    /* height: 90vh; */
-    align-items: stretch;
+    height: 50vh;
     width: 100%;
-    flex: 2;
-    /* position: absolute; */
+    flex: -2;
+    position: fixed;
     /* overflow: hidden; */
-    /* bottom: 0; */
+    bottom: 0;
 }
 
+
+#wrap {
+    background: linear-gradient(135deg, #1e5799 0%,#7db9e8 100%);
+    overflow:hidden;
+    max-width:450px;
+    margin:auto;
+    position: ,absolute  bottom:0;
+    height: 100vh;
+}
 #button_go{
-    flex:2;
+    flex: -1;
 }
 .row_buttons *, #button_go {
     display: flex;
@@ -203,17 +203,19 @@ body.test, body.trainer .close, body.config .close, body.sonido .close, body.clo
 }
 
 .img_icon {
-    width: 0.8em;
-    height: 0.8em;
+    width: 100%;
+    height: 100%;
     /* display: block; */
-    left: 0.2em; 
-    background-size:100% auto;
-    top: 0.2em; 
-    position: absolute;
-    transform: translatex(-50%);
-    margin-left: 50%;
+    /* left: 0.2em; */
+    background-size: auto  70%;
+    /* top: 0.2em; */
+    /* position: absolute; */
+    /* transform: translatex(-50%); */
+    /* margin-left: 50%; */
     transition: all 0.3s cubic-bezier(0.82, -0.12, 1, 1);
     filter:invert();
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #config .img_icon{
@@ -236,10 +238,12 @@ body.test, body.trainer .close, body.config .close, body.sonido .close, body.clo
 #panel_config, #panel_sonido, #panel_sesiones{
     position: absolute;
     width: 100%;
+    TOP: 0;
     height: 100vh;
     z-index: 9999;
     transform: translate(-100% ,200%);
     transition: all cubic-bezier(0.43, -0.01, 0.58, 1) 0.6s;
+    top: 0;
     /* transition-delay: 0.5s; */
     }
 .config #panel_config, .sonido #panel_sonido, .sesiones #panel_sesiones{
