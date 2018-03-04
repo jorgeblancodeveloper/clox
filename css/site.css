@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Roboto'); html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -95,7 +96,8 @@ h2 {
     height: 100vh;
 }
 #button_go{
-    flex: -1;
+   
+	    HEIGHT: 50%;
 }
 .row_buttons *, #button_go {
     display: flex;
@@ -119,9 +121,11 @@ h2 {
 }
 
 .boton {
-    font-size: 3.5em;
-    /* background: rgba(0,0,0,0.5); */
+    font-size: 1.6em;
+     background: rgba(0,0,0,0.1); 
+	transition:all linear 1s;
 }
+
 
 #clock {
     width: 100%;
@@ -159,7 +163,7 @@ h2 {
     height: 100%;
     display: block;
     z-index: 9;
-    /* background: #42607b; */
+    background: #42607b;
 }
 
 .icono:nth-child(2) {
@@ -176,21 +180,24 @@ h2 {
 
 .close {
     position: absolute;
-    width: 3em;
-    top: 0.2em;
+    width: 100%;
+    BOTTOM: 0.2em;
     right: 0.2em;
+    background: red;
+    text-align: center;
     height: 50px;
     z-index: 9999999;
-    transform: translatey(-100%);
+    transform: translatey(100%);
     transition: all 0.5s linear;
 }
 body.test, body.trainer .close, body.config .close, body.sonido .close, body.clock .close, body.sesiones .close{
     transform: translatey(0%);
 }
 .close img {
-    width: 100%;
-    height: auto;
-    filter: invert();
+    width: AUTO;
+    height: 100%;
+    filter: invert(1);
+    MARGIN: AUTO;
 }
 
 .icono.full {
@@ -239,7 +246,7 @@ body.test, body.trainer .close, body.config .close, body.sonido .close, body.clo
     position: absolute;
     width: 100%;
     TOP: 0;
-    height: 100vh;
+    height: calc(100vh - 50px);
     z-index: 9999;
     transform: translate(-100% ,200%);
     transition: all cubic-bezier(0.43, -0.01, 0.58, 1) 0.6s;
@@ -271,7 +278,7 @@ body.test, body.trainer .close, body.config .close, body.sonido .close, body.clo
 .info h3{
     transform:translatex(-100%);
     transition:all 0.3s linear;
-    transition-delay: 0.7s;
+    transition-delay: 0.4s;
 }
 .config .info h3, .sonido .info h3, .sesiones .info h3{
     transform:translatex(0);
