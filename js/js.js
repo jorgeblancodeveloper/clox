@@ -21,7 +21,11 @@ var texto_sonido_asaltos="Asalto: ";
 var texto_sonido_descanso="Descanso: ";
 var texto_sonido_preaviso="Preaviso: ";
 var texto_sonido_fin="Fin combate: ";
-//var data = {rounds:4, time_round:3, time_stop:60, alert:0};
+var sesion = {sesiones:[
+{nombre:"combate", rounds:4, time_round:3, time_stop:60, alert:0},
+{nombre:"calentamiento", rounds:4, time_round:3, time_stop:60, alert:0},
+{nombre:"entrene", rounds:4, time_round:3, time_stop:60, alert:0},
+]};
 
 $(document).ready(function() {
 refresh();
@@ -44,6 +48,9 @@ $("#button_go").click(function(){
 $(".icono").click(function(){
     $(this).addClass("full");
     $('body').addClass($(this).attr("id"));
+	if ($(this).attr("id")=="sesiones"){
+		populate();
+	}
 })
 
 $(".close").click(function(){
@@ -52,8 +59,27 @@ $(".close").click(function(){
   clearTimeout(crono);
 })
 
+
+
 });
 
+function populate(){
+	var node="";
+	console.log(sesion.sesiones.length);
+	for (var i=0; i<sesion.sesiones.length; i++){
+		console.log(sesion.sesiones[i]);
+	 node+="<div class='row_buttons'><div class='boton' onclick='activa_sesion()'>"+sesion.sesiones[i].nombre;
+	 node+="<p>rounds: "+sesion.sesiones[i].rounds+" de "+ sesion.sesiones[i].time_round+"m descanso: "+ sesion.sesiones[i].time_stop+"m con preaviso de "+  sesion.sesiones[i].alert+"</p>";
+	 node+="</div>"+"</div>";
+	}
+	$("#panel_sesiones #sesiones").prepend(node);
+	console.log("minodo"+node);
+}
+
+function activa_sesion(){
+	$(this).addClass("activo");
+	console.log("activa"+this);
+}
 
 function suma(valor, variable){
   window[variable]+=Number(valor);
@@ -73,7 +99,7 @@ function round(){
 function countdown(minutes, howrounds) {
 	seconds=60;
 
-		$("#clock #rounds").html((asaltos-howrounds)+1);	
+		$("#clock #rounds").html(((asaltos-howrounds)+1)+ " de "+asaltos);	
     var mins = minutes
 
     function tick() {
@@ -87,12 +113,8 @@ function countdown(minutes, howrounds) {
             if(mins > 1){
                 countdown(mins-1, howrounds);           
             } else {    
-
             	if(!$("body").hasClass("descanso")){
-            		
             		//rounds=Number(rounds);
-            		
-            	
             	if ((howrounds-1)==0) {return}
             
             	$("body").addClass("descanso");
