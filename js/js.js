@@ -53,7 +53,7 @@ $(".icono").click(function(){
 	}
 })
 
-$(".close").click(function(){
+$(".info").click(function(){
     $(".full").removeClass("full");
     $('body').removeClass();
   clearTimeout(crono);
@@ -68,11 +68,11 @@ function populate(){
 	console.log(sesion.sesiones.length);
 	for (var i=0; i<sesion.sesiones.length; i++){
 		console.log(sesion.sesiones[i]);
-	 node+="<div class='row_buttons'><div class='boton' onclick='activa_sesion()'>"+sesion.sesiones[i].nombre;
+	 node+="<div class='boton' onclick='activa_sesion()'>"+sesion.sesiones[i].nombre;
 	 node+="<p>rounds: "+sesion.sesiones[i].rounds+" de "+ sesion.sesiones[i].time_round+"m descanso: "+ sesion.sesiones[i].time_stop+"m con preaviso de "+  sesion.sesiones[i].alert+"</p>";
-	 node+="</div>"+"</div>";
+	 node+="</div>";
 	}
-	$("#panel_sesiones #sesiones").prepend(node);
+	$("#panel_sesiones .botonera .row_buttons").prepend(node);
 	console.log("minodo"+node);
 }
 

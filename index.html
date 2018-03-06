@@ -5,118 +5,133 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta content="IE=edge" http-equiv="X-UA-Compatible">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <meta name="theme-color" content="#008000"/>
-        <link rel="manifest" href="manifest.json">
+      <meta name="theme-color" content="#008000"/>
+      <link rel="manifest" href="manifest.json">
       <link rel="stylesheet" media="screen" href="css/site.css">
       <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
       <script src="js/js.js"></script>
    </head>
    <body>
       <div id="clock">
-          <div id="rounds">4</div>
+         <div id="rounds">4</div>
          <h1 id="counter">tiempo</h1>
-         <div class="float_boton">II</div>
+         <div class="float_boton info">II</div>
       </div>
-   
       <div id="wrap">
-	         <div class="close"><img src="img/close.png"> Volver</div>
          <div id="main">
-         <div id="button_go"><h1>GO</h1></div>
-         <div class="botonera">
-            <div class="row_buttons" id="asaltos">
-               <div class="boton" data-value="-1">-</div>
-               <h2>Asaltos </h2>
-               <div class="boton" data-value="1">+</div>
+            <div id="button_go">
+               <h1>GO</h1>
             </div>
-            <div class="row_buttons"  id="tiempo_asaltos">
-               <div class="boton" data-value="-1">-</div>
-               <h2>tiempo asaltos</h2>
-               <div class="boton" data-value="1">+</div>
-            </div>
-            <div class="row_buttons" id="tiempo_descanso">
-               <div class="boton" data-value="-1">-</div>
-               <h2>descanso</h2>
-               <div class="boton" data-value="1">+</div>
-            </div>
-            <div class="row_buttons" id="preaviso">
-               <div class="boton" data-value="-1">-</div>
-               <h2>Asaltos</h2>
-               <div class="boton" data-value="1">+</div>
-            </div>
-            <div class="row_buttons">
-               <div class="boton icono" id="config"><div class="img_icon"></div></div>
-               <div class="boton icono" id="sonido"><div class="img_icon"></div></div>
-               <div class="boton icono" id="trainer"><div class="img_icon"></div></div>
-               <div class="boton icono" id="sesiones"><div class="img_icon"></div></div>
-            </div>
-         </div>
-</div>
+            <div class="botonera">
+               <div class="row_buttons" id="asaltos">
+                  <div class="boton" data-value="-1">-</div>
+                  <h2>Asaltos </h2>
+                  <div class="boton" data-value="1">+</div>
+               </div>
+               <div class="row_buttons"  id="tiempo_asaltos">
+                  <div class="boton" data-value="-1">-</div>
+                  <h2>tiempo asaltos</h2>
+                  <div class="boton" data-value="1">+</div>
+               </div>
+               <div class="row_buttons" id="tiempo_descanso">
+                  <div class="boton" data-value="-1">-</div>
+                  <h2>descanso</h2>
+                  <div class="boton" data-value="1">+</div>
+               </div>
+               <div class="row_buttons" id="preaviso">
+                  <div class="boton" data-value="-1">-</div>
+                  <h2>Asaltos</h2>
+                  <div class="boton" data-value="1">+</div>
+               </div>
 
+               </div>
+            </div>
+
+               <div class="iconera ">
+                  <div class="boton icono" id="config">
+                     <div class="img_icon"></div>
+                  </div>
+                  <div class="boton icono" id="sonido">
+                     <div class="img_icon"></div>
+                  </div>
+                  <div class="boton icono" id="trainer">
+                     <div class="img_icon"></div>
+                  </div>
+                  <div class="boton icono" id="sesiones">
+                     <div class="img_icon"></div>
+                  </div>
+
+         </div>
          <div id="panel_config">
-            <div class="info"><h3>Configuracion</h3></div>
-            <div class="botonera">
-            <div class="row_buttons" id="idioma">
-               <div class="boton" data-value="-1">-</div>
-               <h2>Idioma: Español </h2>
-               <div class="boton" data-value="1">+</div>
+            <div class="info">
+               <h3>Configuracion</h3>
             </div>
-
-  
-
-
+            <div class="botonera">
+               <div class="row_buttons" id="idioma">
+                  <div class="boton" data-value="-1">-</div>
+                  <h2>Idioma: Español </h2>
+                  <div class="boton" data-value="1">+</div>
+               </div>
             </div>
          </div>
-
-
-
          <div id="panel_sonido">
-            <div class="info"><h3>Sonidos</h3></div>
+            <div class="info">
+               <h3>Sonidos</h3>
+            </div>
             <div class="botonera">
-
-            <div class="row_buttons"  id="sonido_asaltos">
-               <div class="boton" data-value="-1">-</div>
-               <h2>Asalto:</h2>
-               <div class="boton" data-value="1">+</div>
-            </div>
-            <div class="row_buttons" id="sonido_descanso">
-               <div class="boton" data-value="-1">-</div>
-               <h2>Descanso</h2>
-               <div class="boton" data-value="1">+</div>
-            </div>
-            <div class="row_buttons" id="sonido_fin">
-               <div class="boton" data-value="-1">-</div>
-               <h2>Fin combate</h2>
-               <div class="boton" data-value="1">+</div>
-            </div>
-            <div class="row_buttons" id="sonido_preaviso">
-               <div class="boton" data-value="-1">-</div>
-               <h2>preaviso</h2>
-               <div class="boton" data-value="1">+</div>
-            </div>
+               <div class="row_buttons"  id="sonido_asaltos">
+                  <div class="boton" data-value="-1">-</div>
+                  <h2>Asalto:</h2>
+                  <div class="boton" data-value="1">+</div>
+               </div>
+               <div class="row_buttons" id="sonido_descanso">
+                  <div class="boton" data-value="-1">-</div>
+                  <h2>Descanso</h2>
+                  <div class="boton" data-value="1">+</div>
+               </div>
+               <div class="row_buttons" id="sonido_fin">
+                  <div class="boton" data-value="-1">-</div>
+                  <h2>Fin combate</h2>
+                  <div class="boton" data-value="1">+</div>
+               </div>
+               <div class="row_buttons" id="sonido_preaviso">
+                  <div class="boton" data-value="-1">-</div>
+                  <h2>preaviso</h2>
+                  <div class="boton" data-value="1">+</div>
+               </div>
             </div>
          </div>
-
-    <div id="panel_sesiones">
-            <div class="info"><h3>Sesiones</h3></div>
+         <div id="panel_sesiones">
+            <div class="info">
+               <h3>Sesiones</h3>
+            </div>
             <div class="botonera">
-            <div  id="sesiones">
-               
-            </div>
-		<div class="row_buttons">
-			<div class="boton" data-value="1">Añadir sesion</div>
+            
+              <div class="row_buttons">
+                  <div class="boton" data-value="1">Añadir sesion</div>
+               </div>
+            </div> 
          </div>
-			
+         <div id="panel_trainer">
+            <div class="info">
+               <h3>Trainer</h3>
             </div>
+            <div class="botonera">
+            
+              <div class="row_buttons">
+                  <div class="boton" data-value="1">Añadir sesion</div>
+               </div>
+            </div> 
          </div>
 
       </div>
-       <script>
-      if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('js/sw.js')
-          .then(function() {
-                console.log('Service Worker Registered');
-          });
-      }
-    </script>
+      <script>
+         if('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('js/sw.js')
+             .then(function() {
+                   console.log('Service Worker Registered');
+             });
+         }
+      </script>
    </body>
 </html>

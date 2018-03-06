@@ -40,7 +40,7 @@ body {
     text-shadow: 0 0 12px #0e3f71;
     height: 100vh;
     background: #437DB7;
-	overflow:hidden;
+    overflow:hidden;
 }
 
 h1 {
@@ -56,10 +56,14 @@ h2 {
     /* flex:2; */
     font-size: 2em;
     /* margin: 0.6em 1.1em; */
-    background: #000;
-    padding: 0.3em;
+    background-image: url('../img/close.png');
+    background-size: auto 80%;
+    padding: 0.3em 1em  0;
+    background-repeat: no-repeat;
+    background-position: 98% center;
+    height: 50px;
 }
-#panel_config, #panel_sonido #panel_sesiones{
+#panel_config, #panel_sonido, #panel_sesiones, #panel_trainer{
     display:flex;
     flex-direction:column;
 
@@ -75,13 +79,14 @@ h2 {
     position: relative;
     align-items: stretch;
     display: flex;
+    flex-direction: clumn;
     justify-content: space-between;
 }
 
 #wrap, .botonera {
     display: flex;
     flex-direction: column;
-    height: 50vh;
+    height: 90vh;
     width: 100%;
     flex: -2;
     /* position: fixed; */
@@ -89,27 +94,31 @@ h2 {
     bottom: 0;
 }
 
-
+.botonera{
+        background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%);
+}
 #wrap {
     background: linear-gradient(135deg, #1e5799 0%,#7db9e8 100%);
     overflow:hidden;
+    width: 100%;
     max-width:450px;
     margin:auto;
     position: ,absolute  bottom:0;
     height: 100vh;
+    position: relative;
 }
 #button_go{
    
-	    HEIGHT: 50%;
+        HEIGHT: 50%;
 }
-.row_buttons *, #button_go {
+.row_buttons>*, #button_go {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 .row_buttons{
-    background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); 
+    /* background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); */
 }
 
  .icono{
@@ -126,7 +135,8 @@ h2 {
 .boton {
     font-size: 1.6em;
      background: rgba(0,0,0,0.1); 
-	transition:all linear 1s;
+    transition:all linear 1s;
+    box-shadow: 0 0 30px #000 inset;
 }
 
 
@@ -166,7 +176,7 @@ h2 {
     height: 100%;
     display: block;
     z-index: 9;
-    background: #42607b;
+    /* background: #000000; */
 }
 
 .icono:nth-child(2) {
@@ -181,35 +191,16 @@ h2 {
     left: 75%;
 }
 
-.close {
-    position: absolute;
-    width: 100%;
-    BOTTOM: 0;
-    right: 0.2em;
-    /* background: red; */
-    text-align: center;
-    height: 50px;
-    z-index: 9999999;
-    transform: translatey(100%);
-    transition: all 0.5s linear;
-}
-body.test, body.trainer .close, body.config .close, body.sonido .close, body.clock .close, body.sesiones .close{
-    transform: translatey(0%);
-}
-.close img {
-    width: AUTO;
-    height: 100%;
-    filter: invert(1);
-    MARGIN: AUTO;
-}
+
 
 .icono.full {
     /* position: absolute; */
     left: 0;
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
-    z-index: 99;
+    z-index: 9999;
     pointer-events: none;
+    background: #000;
 }
 
 .img_icon {
@@ -239,15 +230,16 @@ body.test, body.trainer .close, body.config .close, body.sonido .close, body.clo
 }
 .full .img_icon {
     margin-left: 0;
-    transform: translatex(0);
+    /* transform: translatex(0); */
     /* transition-delay: 0.5s; */
-    width: 1em;
+    width: 1.8em;
     opacity: 0.5;
-    height: 1em;
+    height: 1.8em;
 }
-#panel_config, #panel_sonido, #panel_sesiones{
+#panel_config, #panel_sonido, #panel_sesiones,#panel_trainer{
     position: absolute;
     width: 100%;
+    /* background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); */
     TOP: 0;
     height: calc(100vh - 0px);
     z-index: 9999;
@@ -257,9 +249,16 @@ body.test, body.trainer .close, body.config .close, body.sonido .close, body.clo
     display: flex;
     flex-direction:  column-reverse;
     /* transition-delay: 0.5s; */
+    max-width: 450px;
     }
-.config #panel_config, .sonido #panel_sonido, .sesiones #panel_sesiones{
+.config #panel_config, .sonido #panel_sonido, .sesiones #panel_sesiones,.trainer #panel_trainer{
     transform: translate(0, 0);
+}
+#panel_sesiones .row_buttons{
+    flex-direction:column;
+    display:flex;
+    font-size: 0.7em;
+    text-align: center;
 }
 .float_boton{
     padding: 0.5em;
@@ -288,8 +287,17 @@ body.test, body.trainer .close, body.config .close, body.sonido .close, body.clo
 .config .info h3, .sonido .info h3, .sesiones .info h3{
     transform:translatex(0);
 }
+.iconera{
+    position:relative;
+    height:50px;
+}
+
 @media (min-width: 450px) {
 body{
-	font-size:18px;
+    font-size:18px;
 }
+}
+#missesiones{
+    width:100%;
+    flex-direction:column;
 }
