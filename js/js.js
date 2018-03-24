@@ -29,7 +29,9 @@ var sesion = {sesiones:[
 
 $(document).ready(function() {
 refresh();
-
+  console.log(localStorage.getItem("data"));
+   sesion = JSON.parse(localStorage.getItem("data"))
+  populate();
 $("#main .boton").click(function(e){
 	//e.stopPropagation();
   suma( $(this).attr("data-value"),$(this).parent().attr("id"))  ;
@@ -46,39 +48,57 @@ $("#button_go").click(function(){
 })
 
 $(".icono").click(function(){
+  if ($("body").hasClass("home")){
     $(this).addClass("full");
+   // $(".close").html('<div class="info">'+$(this).attr("id")+ '</div>')
     $('body').addClass($(this).attr("id"));
-	if ($(this).attr("id")=="sesiones"){
-		populate();
-	}
-})
+    $('body').removeClass("home");
+} else {
 
-$(".info").click(function(){
-    $(".full").removeClass("full");
+      $(".full").removeClass("full");
     $('body').removeClass();
+     $('body').addClass("home");
   clearTimeout(crono);
+}
 })
+$("#add_sesion").click(function(){
+  if (!$("#panel_sesiones .modal").hasClass("on")){
+$("#panel_sesiones .modal").addClass("on");
 
+} else {
 
-
+  sesion.sesiones.push({ nombre: "id", rounds: 9, time_stop:90,alert:90 });
+ populate();
+  $("#panel_sesiones .modal").removeClass("on");
+}
+})
 });
-
+function remove(ses){
+  console.log($(this).parent().index());
+  $("#panel_sesiones .botonera .boton:nth-child("+(ses+1)+")").addClass("getout").delay(800).fadeOut(600);
+sesion.sesiones.splice($(this).parent().index(), 1); 
+save();
+//populate();
+};
 function populate(){
 	var node="";
-	console.log(sesion.sesiones.length);
 	for (var i=0; i<sesion.sesiones.length; i++){
-		console.log(sesion.sesiones[i]);
+    console.log("voy por "+i);
 	 node+="<div class='boton' onclick='activa_sesion()'>"+sesion.sesiones[i].nombre;
-	 node+="<p>rounds: "+sesion.sesiones[i].rounds+" de "+ sesion.sesiones[i].time_round+"m descanso: "+ sesion.sesiones[i].time_stop+"m con preaviso de "+  sesion.sesiones[i].alert+"</p>";
-	 node+="</div>";
+	 node+="<p>rounds: "+sesion.sesiones[i].rounds+" de "+ sesion.sesiones[i].time_round+"m descanso: "+ sesion.sesiones[i].time_stop+"m </br> Preaviso de "+  sesion.sesiones[i].alert+"</p>";
+	 node+="<div class='remove'  onclick='remove("+i+")'></div></div>";
 	}
-	$("#panel_sesiones .botonera .row_buttons").prepend(node);
-	console.log("minodo"+node);
+	$("#panel_sesiones .botonera").html(node);
+save();
+}
+ 
+function save(){
+    var myJSON = JSON.stringify(sesion);
+  localStorage.setItem("data", myJSON);
 }
 
 function activa_sesion(){
 	$(this).addClass("activo");
-	console.log("activa"+this);
 }
 
 function suma(valor, variable){
@@ -114,9 +134,7 @@ function countdown(minutes, howrounds) {
                 countdown(mins-1, howrounds);           
             } else {    
             	if(!$("body").hasClass("descanso")){
-            		//rounds=Number(rounds);
-            	if ((howrounds-1)==0) {return}
-            
+            	if ((howrounds-1)==0) {return}       
             	$("body").addClass("descanso");
     			countdown(tiempo_descanso, howrounds);
 
