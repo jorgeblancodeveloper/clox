@@ -65,7 +65,7 @@ input{
 }
 
 #main{
-    height: calc(100% - 50px);
+    height: calc(100% - 60px);
     flex-direction:  column;
     display: flex;
     justify-content: space-between;
@@ -85,6 +85,33 @@ input{
         overflow: scroll;
         bottom: 0;
         background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%);
+}
+
+
+.botonera:before{
+content: "";
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    height: 70px;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    z-index: 9;
+    opacity:0;
+    transition:all 0.6s linear;
+
+}
+.botonera.shadow_top:before{
+opacity:1;
+}
+.botonera.shadow_bottom:after{
+content: "";
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    height: 70px;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    z-index: 9;
+
 }
 #wrap {
     background: linear-gradient(135deg, #1e5799 0%,#7db9e8 100%);
@@ -116,8 +143,13 @@ input{
     display: flex;
     justify-content: center;
     flex-direction:  column;
-    min-height: 50px;
+    min-height: 60px;
+    max-height: 80px;
     position:relative;
+}
+
+.boton.activo{
+    background:red;
 }
 .getout{
   /*  transform:scaley(0);*/
@@ -130,11 +162,15 @@ input{
 .remove{
         background-image:url("../img/close.png");
         width:40px;
-        height:40px;
+        height: calc(100% - 1px);
         /* background-image: url(../img/play.png); */
         background-size: 100% auto;
         position: absolute;
         right: 0;
+        background-size: auto 40%;
+        background-repeat:  no-repeat;
+        background-position:  center;
+        background-color: rgba(0,0,0,0.5);
 }
 #clock {
     width: 100%;
@@ -168,7 +204,7 @@ input{
     z-index: 9;
     background-size: auto 40%;
     background-repeat:  no-repeat;
-    background-position:  center;
+    background-position: center center;
 }
 
 .home .icono{
@@ -205,7 +241,7 @@ input{
 .panel{
      position: absolute;
     width: 100%;
-    height: calc(100% - 50px);
+    height: calc(100% - 60px);
     transform: translate(0% ,200%);
     transition: all cubic-bezier(0.43, -0.01, 0.58, 1) 0.6s;
     max-width: 450px;
@@ -233,7 +269,13 @@ position: absolute;
     display:flex;
     z-index:  9;
 }
-
+.modal div{
+    text-align:center;
+    padding:.4em;
+    margin:0.5em;
+    border-radius:8px;
+    background:#5aa7f6;
+}
 #panel_sesiones>.boton{
     flex: 0.2;
     text-align: center;
