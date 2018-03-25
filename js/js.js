@@ -58,6 +58,11 @@ sonido[2] = new Audio("mp3/sirena.mp3");
 
 
 $(document).ready(function() {
+    
+    $("html, body, #wrapper").css({
+    height: $(window).height()
+});
+    
     refresh();
     if (localStorage.getItem("data")) {
         sesion = JSON.parse(localStorage.getItem("data"))
