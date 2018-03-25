@@ -57,7 +57,7 @@ sonido[4] = new Audio("mp3/slap.mp3");
 sonido[4] = new Audio("mp3/timbre.mp3");
 
 $(document).ready(function() {
-  var height =  window.innerWidth;//Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
+  var height =  window.innerHeight;//Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
 $("body,html,#wrap").css("height", height)
     refresh();
     if (localStorage.getItem("data")) {
