@@ -42,7 +42,7 @@ var sesion = {
 };
 
 
-var txt_sonidos = ["sirena", "timbre", "sirena2"]
+var txt_sonidos = ["sirena", "timbre", "dingdong","buzzer","slap"]
 var sonido_asaltos = 1;
 var sonido_descanso = 0;
 var sonido_preaviso = 2;
@@ -51,18 +51,13 @@ var sonido_fin = 1;
 var sonidos_mp3 = [];
 sonido[0] = new Audio("mp3/sirena.mp3");
 sonido[1] = new Audio("mp3/timbre.mp3");
-sonido[2] = new Audio("mp3/sirena.mp3");
-
-
-
-
+sonido[2] = new Audio("mp3/dingdong.mp3");
+sonido[3] = new Audio("mp3/buzzer.mp3");
+sonido[4] = new Audio("mp3/slap.mp3");
 
 $(document).ready(function() {
-    
-    $("html, body, #wrapper").css({
-    height: $(window).height()
-});
-    
+  var height = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
+$("body,html,#wrap").css("height", height)
     refresh();
     if (localStorage.getItem("data")) {
         sesion = JSON.parse(localStorage.getItem("data"))
@@ -95,12 +90,12 @@ $(document).ready(function() {
             $(".full").removeClass("full");
             $('body').removeClass();
             $('body').addClass("home");
-            clearTimeout(crono);
         }
     })
 
     $(".pause").click(function() {
         console.log("k");
+          clearTimeout(crono);
         closes();
 
     })
@@ -194,9 +189,11 @@ function suma(valor, variable) {
 function sonido(valor, variable) {
   
     window[variable] += Number(valor);
-    console.log(window[variable]);
     if ( window[variable]>(txt_sonidos.length-1)){ window[variable]=0}
+          if ( window[variable]<0){ window[variable]=txt_sonidos.length-1}
     $("#" + variable + " h2").html(window["texto_" + variable] + txt_sonidos[window[variable]]);
+    sonido[window[variable]].play();
+    console.log(window[variable]);
 }
 
 function round() {
@@ -216,7 +213,7 @@ function countdown(minutes, howrounds) {
         seconds--;
         counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
         if (seconds > 0) {
-            crono = setTimeout(tick, 100);
+            crono = setTimeout(tick, 10);
         } else {
             if (mins > 1) {
                 countdown(mins - 1, howrounds);
@@ -224,14 +221,17 @@ function countdown(minutes, howrounds) {
                 if (!$("body").hasClass("descanso")) {
                     if ((howrounds - 1) == 0) {
                         return
+                        
                     }
                     $("body").addClass("descanso");
+                     sonido[sonido_descanso].play();
                     countdown(tiempo_descanso, howrounds);
-
+                      
                 } else {
                     howrounds--;
                     $("body").removeClass("descanso");
                     countdown(tiempo_asaltos, howrounds)
+                     sonido[sonido_asaltos].play();
                 }
 
             }
