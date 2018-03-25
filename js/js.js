@@ -56,6 +56,9 @@ sonido[3] = new Audio("mp3/buzzer.mp3");
 sonido[4] = new Audio("mp3/slap.mp3");
 sonido[5] = new Audio("mp3/timbre.mp3");
 
+var click = new Audio("mp3/click.mp3");
+var fail = new Audio("mp3/fail.mp3");
+
 $(document).ready(function() {
  /* var height =  window.innerHeight;//Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
 $("body,html,#wrap").css("height", height)*/
@@ -66,6 +69,7 @@ $("body,html,#wrap").css("height", height)*/
     populate();
     $("#panel_main .boton").click(function(e) {
         suma($(this).attr("data-value"), $(this).parent().attr("id"));
+          click.play();
     });
 
     $("#panel_sonido .boton").click(function(e) {
@@ -79,15 +83,16 @@ $("body,html,#wrap").css("height", height)*/
     })
 
     $(".icono").click(function() {
-        sonido[0].play();
+        
 
         if ($("body").hasClass("home")) {
+          click.play();
             $(this).addClass("full");
             // $(".close").html('<div class="info">'+$(this).attr("id")+ '</div>')
             $('body').addClass($(this).attr("id"));
             $('body').removeClass("home");
         } else {
-
+fail.play();
             $(".full").removeClass("full");
             $('body').removeClass();
             $('body').addClass("home");
@@ -95,7 +100,7 @@ $("body,html,#wrap").css("height", height)*/
     })
 
     $(".pause").click(function() {
-        console.log("k");
+       fail.play();
           clearTimeout(crono);
         closes();
 
@@ -103,6 +108,7 @@ $("body,html,#wrap").css("height", height)*/
 
 
     $("#add_sesion").click(function() {
+      click.play();
         if (!$("#panel_sesiones .modal").hasClass("on")) {
             $("#panel_sesiones .modal").addClass("on");
         } else {
@@ -147,6 +153,8 @@ function closes() {
 
 
 function remove(ses) {
+    fail.play();
+
    $("#panel_sesiones .botonera .boton:nth-child(" + ($(ses).index() + 1) + ")").addClass("getout").delay(800).fadeOut(600);
     sesion.sesiones.splice($(this).parent().index(), 1);
     save();
@@ -180,6 +188,7 @@ function activa_sesion(index) {
   console.log("activo"+index);
   $("#panel_sesiones .boton").removeClass("activo");
     $(index).addClass("activo");
+    click.play();
 }
 
 function suma(valor, variable) {
