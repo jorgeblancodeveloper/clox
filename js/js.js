@@ -42,7 +42,7 @@ var sesion = {
 };
 
 
-var txt_sonidos = ["sirena", "timbre", "dingdong","buzzer","slap"]
+var txt_sonidos = ["sirena", "campana", "dong","buzzer","slap","timbre"]
 var sonido_asaltos = 1;
 var sonido_descanso = 0;
 var sonido_preaviso = 2;
@@ -50,10 +50,11 @@ var sonido_fin = 1;
 
 var sonidos_mp3 = [];
 sonido[0] = new Audio("mp3/sirena.mp3");
-sonido[1] = new Audio("mp3/timbre.mp3");
-sonido[2] = new Audio("mp3/dingdong.mp3");
+sonido[1] = new Audio("mp3/campana.mp3");
+sonido[2] = new Audio("mp3/dong.mp3");
 sonido[3] = new Audio("mp3/buzzer.mp3");
 sonido[4] = new Audio("mp3/slap.mp3");
+sonido[4] = new Audio("mp3/timbre.mp3");
 
 $(document).ready(function() {
   var height = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
