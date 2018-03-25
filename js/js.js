@@ -54,11 +54,11 @@ sonido[1] = new Audio("mp3/campana.mp3");
 sonido[2] = new Audio("mp3/dong.mp3");
 sonido[3] = new Audio("mp3/buzzer.mp3");
 sonido[4] = new Audio("mp3/slap.mp3");
-sonido[4] = new Audio("mp3/timbre.mp3");
+sonido[5] = new Audio("mp3/timbre.mp3");
 
 $(document).ready(function() {
-  var height =  window.innerHeight;//Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
-$("body,html,#wrap").css("height", height)
+ /* var height =  window.innerHeight;//Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
+$("body,html,#wrap").css("height", height)*/
     refresh();
     if (localStorage.getItem("data")) {
         sesion = JSON.parse(localStorage.getItem("data"))
