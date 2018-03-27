@@ -60,7 +60,7 @@ var click = new Audio("mp3/click.mp3");
 var fail = new Audio("mp3/fail.mp3");
 
 $(document).ready(function() {
-  var height =  window.innerHeight;//Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
+  var height =  window.innerHeight-50;//Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
 $("body,html").css("height", height);
     refresh();
     if (localStorage.getItem("data")) {
