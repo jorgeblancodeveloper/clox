@@ -41,6 +41,7 @@ body {
     height: calc(100vh);
     background: #437DB7;
     overflow:hidden;
+    position:fixed;
 }
 
 h1 {
