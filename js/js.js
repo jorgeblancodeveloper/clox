@@ -9,13 +9,11 @@ var texto_asaltos = "Asaltos: ";
 var texto_tiempo_asaltos = "Tiempo asalto: ";
 var texto_tiempo_descanso = "Tiempo descanso: ";
 var texto_preaviso = "Preaviso";
-
-
-
 var texto_sonido_asaltos = "Asalto: ";
 var texto_sonido_descanso = "Descanso: ";
 var texto_sonido_preaviso = "Preaviso: ";
 var texto_sonido_fin = "Fin combate: ";
+
 var sesion = {
     sesiones: [{
             nombre: "combate",
@@ -46,7 +44,7 @@ var txt_sonidos = ["sirena", "campana", "dong","buzzer","slap","timbre"]
 var sonido_asaltos = 1;
 var sonido_descanso = 0;
 var sonido_preaviso = 2;
-var sonido_fin = 1;
+var sonido_fin = 3;
 
 var sonidos_mp3 = [];
 sonido[0] = new Audio("mp3/sirena.mp3");
@@ -60,13 +58,15 @@ var click = new Audio("mp3/click.mp3");
 var fail = new Audio("mp3/fail.mp3");
 
 $(document).ready(function() {
-  var height =  window.innerHeight-50;//Math.max(document.documentElement.clientWidth, window.innerWidth || 0);    
+  var height =  window.innerHeight-60;
+
 $("body,html").css("height", height);
     refresh();
     if (localStorage.getItem("data")) {
         sesion = JSON.parse(localStorage.getItem("data"))
     }
     populate();
+
     $("#panel_main .boton").click(function(e) {
         suma($(this).attr("data-value"), $(this).parent().attr("id"));
           click.play();
@@ -74,7 +74,6 @@ $("body,html").css("height", height);
 
     $("#panel_sonido .boton").click(function(e) {
         sonido($(this).attr("data-value"), $(this).parent().attr("id"));
-
     });
 
     $("#button_go").click(function() {
@@ -83,16 +82,13 @@ $("body,html").css("height", height);
     })
 
     $(".icono").click(function() {
-        
-
         if ($("body").hasClass("home")) {
           click.play();
             $(this).addClass("full");
-            // $(".close").html('<div class="info">'+$(this).attr("id")+ '</div>')
             $('body').addClass($(this).attr("id"));
             $('body').removeClass("home");
         } else {
-fail.play();
+            fail.play();
             $(".full").removeClass("full");
             $('body').removeClass();
             $('body').addClass("home");
@@ -103,15 +99,21 @@ fail.play();
        fail.play();
           clearTimeout(crono);
         closes();
-
     })
 
+/* $(".modal").click(function() {
+ $("#panel_sesiones .modal").removeClass("on");
+ $("#add_sesion").html("Añadir sesión");
+          fail.play();
+ });*/
 
-    $("#add_sesion").click(function() {
+$("#add_sesion").click(function() {
       click.play();
         if (!$("#panel_sesiones .modal").hasClass("on")) {
             $("#panel_sesiones .modal").addClass("on");
+            $("#add_sesion").html("Confirmar");
         } else {
+          $("#add_sesion").html("Añadir sesión");
             sesion.sesiones.push({
                 nombre: $("#name").val(),
                 rounds: asaltos,
@@ -123,6 +125,7 @@ fail.play();
             save();
             setTimeout(function() {
                 $("#panel_sesiones .botonera .boton:last-child").removeClass("getout");
+                //window.scrollTo(0, 0);
             }, 10);
             $("#panel_sesiones .modal").removeClass("on");
         }
@@ -130,9 +133,24 @@ fail.play();
 
 
     $("#panel_sesiones .botonera").scroll(function() {
-        console.log("Event Fired " + $("#panel_sesiones .botonera").scrollTop());
-        if ($("#panel_sesiones .botonera").scrollTop() > 0) {
+       set_shadows();
+});
+});
+
+function closes() {
+    $(".full").removeClass("full");
+    $('body').removeClass();
+    $('body').addClass("home");
+}
+function set_shadows(){
+  console.log("compruebo scrol "+$("#panel_sesiones .botonera").scrollTop() +"  "+$("#panel_sesiones .boton:not(.getout)").length*60+" scroll "+(window.innerHeight-60));
+ element=$("#panel_sesiones .botonera");
+ //console.log(element.scrollHeight +" "+ element.scrollTop +"  "+element.clientHeight);
+
+
+   if ($("#panel_sesiones .botonera").scrollTop() > 0) {
             $("#panel_sesiones .botonera").addClass("shadow_top");
+              console.log("hagp scrol");
         } else {
             $("#panel_sesiones .botonera").removeClass("shadow_top");
         }
@@ -141,23 +159,15 @@ fail.play();
         if ($("#panel_sesiones .botonera").scrollTop() - $("#panel_sesiones .botonera").height() == $("#panel_sesiones .botonera").outerHeight()) {
             alert("bottom!");
         }
-    })
-});
-
-
-function closes() {
-    $(".full").removeClass("full");
-    $('body').removeClass();
-    $('body').addClass("home");
+    
 }
 
-
 function remove(ses) {
-    fail.play();
-
+    //fail.play();
    $("#panel_sesiones .botonera .boton:nth-child(" + ($(ses).index() + 1) + ")").addClass("getout").delay(800).fadeOut(600);
     sesion.sesiones.splice($(this).parent().index(), 1);
     save();
+        set_shadows();
 };
 
 function populate() {
@@ -168,6 +178,7 @@ function populate() {
         node += "<div class='remove'  onclick='remove($(this).parent())'></div></div>";
     }
     $("#panel_sesiones .botonera").html(node);
+       set_shadows();
     save();
 }
 
@@ -176,7 +187,9 @@ function fillnode(index, clase) {
     node += "<div class='boton " + clase + "' onclick='activa_sesion($(this))'>" + sesion.sesiones[index].nombre;
     node += "<p>rounds: " + sesion.sesiones[index].rounds + " de " + sesion.sesiones[index].time_round + "m descanso: " + sesion.sesiones[index].time_stop + "m </br> Preaviso de " + sesion.sesiones[index].alert + "</p>";
     node += "<div class='remove' onclick='remove($(this).parent())'></div></div>";
+    set_shadows();
     return node;
+        
 }
 
 function save() {
@@ -185,7 +198,6 @@ function save() {
 }
 
 function activa_sesion(index) {
-  console.log("activo"+index);
   $("#panel_sesiones .boton").removeClass("activo");
     $(index).addClass("activo");
     click.play();
@@ -203,7 +215,6 @@ function sonido(valor, variable) {
           if ( window[variable]<0){ window[variable]=txt_sonidos.length-1}
     $("#" + variable + " h2").html(window["texto_" + variable] + txt_sonidos[window[variable]]);
     sonido[window[variable]].play();
-    console.log(window[variable]);
 }
 
 function round() {
