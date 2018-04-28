@@ -86,7 +86,6 @@ input{
         height: auto;
         position:  relative;
         width: 100%;
-        filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
         flex: 1;
         overflow: scroll;
         bottom: 0;
@@ -157,7 +156,6 @@ content: "";
     max-height: 80px;
     position:relative;
     z-index: 99;
-    border: 1px solid black;
 }
 .getout{
     opacity:0;
