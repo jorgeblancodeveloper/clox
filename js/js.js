@@ -8,11 +8,14 @@ var crono;
 var texto_asaltos = "Asaltos: ";
 var texto_tiempo_asaltos = "Tiempo asalto: ";
 var texto_tiempo_descanso = "Tiempo descanso: ";
-var texto_preaviso = "Preaviso";
+var texto_preaviso = "Preaviso: ";
 var texto_sonido_asaltos = "Asalto: ";
 var texto_sonido_descanso = "Descanso: ";
 var texto_sonido_preaviso = "Preaviso: ";
 var texto_sonido_fin = "Fin combate: ";
+
+var txt_sonidos = ["sirena", "campana", "dong","buzzer","slap","timbre"]
+var txt_preavisos = ["ninguno","Asalto", "Descanso", "Asalto y descanso"]
 
 var sesion = {
     sesiones: [{
@@ -40,7 +43,8 @@ var sesion = {
 };
 
 
-var txt_sonidos = ["sirena", "campana", "dong","buzzer","slap","timbre"]
+
+
 var sonido_asaltos = 1;
 var sonido_descanso = 0;
 var sonido_preaviso = 2;
@@ -70,6 +74,7 @@ $("body,html").css("height", height);
     $("#panel_main .boton").click(function(e) {
         suma($(this).attr("data-value"), $(this).parent().attr("id"));
           click.play();
+          refresh();
     });
 
     $("#panel_sonido .boton").click(function(e) {
@@ -101,12 +106,6 @@ $("body,html").css("height", height);
         closes();
     })
 
-/* $(".modal").click(function() {
- $("#panel_sesiones .modal").removeClass("on");
- $("#add_sesion").html("Añadir sesión");
-          fail.play();
- });*/
-
 $("#add_sesion").click(function() {
       click.play();
         if (!$("#panel_sesiones .modal").hasClass("on")) {
@@ -125,13 +124,10 @@ $("#add_sesion").click(function() {
             save();
             setTimeout(function() {
                 $("#panel_sesiones .botonera .boton:last-child").removeClass("getout");
-                //window.scrollTo(0, 0);
             }, 10);
             $("#panel_sesiones .modal").removeClass("on");
         }
     })
-
-
     $("#panel_sesiones .botonera").scroll(function() {
        set_shadows();
 });
@@ -143,31 +139,26 @@ function closes() {
     $('body').addClass("home");
 }
 function set_shadows(){
-  console.log("compruebo scrol "+$("#panel_sesiones .botonera").scrollTop() +"  "+$("#panel_sesiones .boton:not(.getout)").length*60+" scroll "+(window.innerHeight-60));
  element=$("#panel_sesiones .botonera");
- //console.log(element.scrollHeight +" "+ element.scrollTop +"  "+element.clientHeight);
-
-
    if ($("#panel_sesiones .botonera").scrollTop() > 0) {
             $("#panel_sesiones .botonera").addClass("shadow_top");
               console.log("hagp scrol");
         } else {
             $("#panel_sesiones .botonera").removeClass("shadow_top");
         }
-
         if ($("#panel_sesiones .botonera").scrollTop == ($("#panel_sesiones .botonera").scrollHeight - $("#panel_sesiones .botonera").offsetHeight)) {}
         if ($("#panel_sesiones .botonera").scrollTop() - $("#panel_sesiones .botonera").height() == $("#panel_sesiones .botonera").outerHeight()) {
-            alert("bottom!");
+            //alert("bottom!");
         }
     
 }
 
 function remove(ses) {
-    //fail.play();
+    fail.play();
    $("#panel_sesiones .botonera .boton:nth-child(" + ($(ses).index() + 1) + ")").addClass("getout").delay(800).fadeOut(600);
     sesion.sesiones.splice($(this).parent().index(), 1);
     save();
-        set_shadows();
+    set_shadows();
 };
 
 function populate() {
@@ -178,18 +169,17 @@ function populate() {
         node += "<div class='remove'  onclick='remove($(this).parent())'></div></div>";
     }
     $("#panel_sesiones .botonera").html(node);
-       set_shadows();
+    set_shadows();
     save();
 }
 
 function fillnode(index, clase) {
     var node = "";
     node += "<div class='boton " + clase + "' onclick='activa_sesion($(this))'>" + sesion.sesiones[index].nombre;
-    node += "<p>rounds: " + sesion.sesiones[index].rounds + " de " + sesion.sesiones[index].time_round + "m descanso: " + sesion.sesiones[index].time_stop + "m </br> Preaviso de " + sesion.sesiones[index].alert + "</p>";
+    node += "<p>rounds: " + sesion.sesiones[index].rounds + " de " + sesion.sesiones[index].time_round + "m descanso: " + sesion.sesiones[index].time_stop + "m </br> Preaviso de " + txt_preavisos[sesion.sesiones[index].alert] + "</p>";
     node += "<div class='remove' onclick='remove($(this).parent())'></div></div>";
     set_shadows();
     return node;
-        
 }
 
 function save() {
@@ -200,6 +190,11 @@ function save() {
 function activa_sesion(index) {
   $("#panel_sesiones .boton").removeClass("activo");
     $(index).addClass("activo");
+ asaltos = sesion.sesiones[$(index).index()].rounds;
+ tiempo_asaltos =  sesion.sesiones[$(index).index()].time_round;
+ tiempo_descanso = sesion.sesiones[$(index).index()].time_stop;
+ preaviso = sesion.sesiones[$(index).index()].alert;
+ refresh();
     click.play();
 }
 
@@ -209,7 +204,6 @@ function suma(valor, variable) {
 }
 
 function sonido(valor, variable) {
-  
     window[variable] += Number(valor);
     if ( window[variable]>(txt_sonidos.length-1)){ window[variable]=0}
           if ( window[variable]<0){ window[variable]=txt_sonidos.length-1}
@@ -221,12 +215,10 @@ function round() {
     temp_asaltos = asaltos;
 }
 
-
 function countdown(minutes, howrounds) {
     seconds = 60;
-
     $("#clock #rounds").html(((asaltos - howrounds) + 1) + " de " + asaltos);
-    var mins = minutes
+    var mins = minutes;
 
     function tick() {
         var counter = document.getElementById("counter");
@@ -242,7 +234,6 @@ function countdown(minutes, howrounds) {
                 if (!$("body").hasClass("descanso")) {
                     if ((howrounds - 1) == 0) {
                         return
-                        
                     }
                     $("body").addClass("descanso");
                      sonido[sonido_descanso].play();
@@ -261,17 +252,15 @@ function countdown(minutes, howrounds) {
     tick();
 }
 
-
 function refresh() {
     $("#tiempo_asaltos h2").html(window["texto_tiempo_asaltos"] + tiempo_asaltos);
     $("#asaltos h2").html(window["texto_asaltos"] + asaltos);
     $("#tiempo_descanso h2").html(window["texto_tiempo_descanso"] + tiempo_descanso);
+    if (preaviso>(txt_preavisos.length-1)) {preaviso=0}
+      if (preaviso<0) {preaviso=(txt_preavisos.length-1)}
+    $("#preaviso h2").html(window["texto_preaviso"] + txt_preavisos[preaviso]);
     $("#sonido_asaltos h2").html(window["texto_sonido_asaltos"] + txt_sonidos[sonido_asaltos]);
     $("#sonido_descanso h2").html(window["texto_sonido_descanso"] + txt_sonidos[sonido_descanso]);
     $("#sonido_fin h2").html(window["texto_sonido_fin"] + txt_sonidos[sonido_fin]);
     $("#sonido_preaviso h2").html(window["texto_sonido_preaviso"] + txt_sonidos[sonido_preaviso]);
-    /*   var texto_sonido_asaltos="Sonido Asalto: ";
-var texto_sonido_descanso="Sonido descanso: ";
-var texto_sonido_preaviso="Sonido preaviso: ";
-var texto_sonido_fin="Sonido fin: ";*/
 }
