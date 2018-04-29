@@ -4,7 +4,7 @@ var tiempo_descanso = 1;
 var preaviso = 0;
 var seconds = 60;
 var crono;
-
+var theme = 0;
 var texto_asaltos = "Asaltos: ";
 var texto_tiempo_asaltos = "Tiempo asalto: ";
 var texto_tiempo_descanso = "Tiempo descanso: ";
@@ -13,9 +13,10 @@ var texto_sonido_asaltos = "Asalto: ";
 var texto_sonido_descanso = "Descanso: ";
 var texto_sonido_preaviso = "Preaviso: ";
 var texto_sonido_fin = "Fin combate: ";
-
+var texto_theme = "Theme: ";
 var txt_sonidos = ["sirena", "campana", "dong","buzzer","slap","timbre"]
 var txt_preavisos = ["ninguno","Asalto", "Descanso", "Asalto y descanso"]
+var txt_themes = ["Estandar","Dark","Light", "Color"]
 
 var sesion = {
     sesiones: [{
@@ -80,7 +81,11 @@ $("body,html").css("height", height);
     $("#panel_sonido .boton").click(function(e) {
         sonido($(this).attr("data-value"), $(this).parent().attr("id"));
     });
+    $("#panel_config #theme .boton").click(function(e) {
+       console.log("clic");
+        tema($(this).attr("data-value"));
 
+    });
     $("#button_go").click(function() {
         $("body").addClass("clock");
         countdown(tiempo_asaltos, asaltos);
@@ -188,8 +193,8 @@ function save() {
 }
 
 function activa_sesion(index) {
-  $("#panel_sesiones .boton").removeClass("activo");
-    $(index).addClass("activo");
+$("#panel_sesiones .boton").removeClass("activo");
+ $(index).addClass("activo");
  asaltos = sesion.sesiones[$(index).index()].rounds;
  tiempo_asaltos =  sesion.sesiones[$(index).index()].time_round;
  tiempo_descanso = sesion.sesiones[$(index).index()].time_stop;
@@ -198,11 +203,17 @@ function activa_sesion(index) {
     click.play();
 }
 
-function suma(valor, variable) {
+function suma(valor,variable) {
     window[variable] += Number(valor);
     $("#" + variable + " h2").html(window["texto_" + variable] + window[variable]);
 }
-
+function tema(valor){
+    theme+=Number(valor);
+    //if (theme>txt_themes.lenght) theme=0;
+    $("#wrap").removeClass();
+     $("#wrap").addClass(txt_themes[theme]);
+    refresh();
+}
 function sonido(valor, variable) {
     window[variable] += Number(valor);
     if ( window[variable]>(txt_sonidos.length-1)){ window[variable]=0}
@@ -225,8 +236,12 @@ function countdown(minutes, howrounds) {
         var current_minutes = mins - 1
         seconds--;
         counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+        if ((seconds==30) && (current_minutes==0) && (!$("body").hasClass("descanso")) && ((preaviso==1) || (preaviso==3))) {  sonido[sonido_preaviso].play();console.log("preaviso")}
+        if ((seconds==10) && ($("body").hasClass("descanso")) && ((preaviso==2) || (preaviso==3))) {  sonido[sonido_preaviso].play();console.log("preaviso")}
+
+
         if (seconds > 0) {
-            crono = setTimeout(tick, 10);
+            crono = setTimeout(tick, 100);
         } else {
             if (mins > 1) {
                 countdown(mins - 1, howrounds);
@@ -258,6 +273,7 @@ function refresh() {
     $("#tiempo_descanso h2").html(window["texto_tiempo_descanso"] + tiempo_descanso);
     if (preaviso>(txt_preavisos.length-1)) {preaviso=0}
       if (preaviso<0) {preaviso=(txt_preavisos.length-1)}
+    $("#theme h2").html(window["texto_theme"] +  txt_themes[theme]);
     $("#preaviso h2").html(window["texto_preaviso"] + txt_preavisos[preaviso]);
     $("#sonido_asaltos h2").html(window["texto_sonido_asaltos"] + txt_sonidos[sonido_asaltos]);
     $("#sonido_descanso h2").html(window["texto_sonido_descanso"] + txt_sonidos[sonido_descanso]);

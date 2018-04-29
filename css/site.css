@@ -42,6 +42,8 @@ body {
     width:100%;
     display: flex;
     align-items:  center;
+            background: #381D2A;
+            color: #ffffff;
 }
 
 h1 {
@@ -91,6 +93,11 @@ input{
         overflow: scroll;
         bottom: 0;
         pointer-events:  none;
+}
+
+.disabled{
+   pointer-events:none;
+   color: rgba(255,255,255,0.3)
 }
 
 #button_go{
@@ -258,7 +265,7 @@ content: "";
     transform: translate(0, 0);
     /* pointer-events:  all; */
 }
-.modal{position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.3);display: flex;align-items: center;justify-content: center;flex-direction: column;z-index: 9;display: none;/* opacity: 0; */transition: all 0.6s ease-in-out;}
+.modal{position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.3);display: flex;align-items: center;justify-content: center;flex-direction: column;z-index: 999;display: none;/* opacity: 0; */transition: all 0.6s ease-in-out;}
 .modal.on{
     display:flex;
     opacity: 1;
@@ -305,28 +312,86 @@ content: "";
 
 /*---   theme ´´´´/*/
 
-body{
-        background: #381D2A;
-            color: #ffffff;
-}
+
 .modal div, .row_buttons, .boton:not(.icono){
     background-color: #8F2D56;
 }
 
- .icono{
-    background-color: linear-gradient(to right, #7abcff 0%,#60abf8 44%,#4096ee 100%); 
+.icono.full {
+    background-color: #000;
 }
 .boton.activo{
     background:red;
 }
-.icono.full {
-    background-color: #000;
-}
+
 .modal div{
-    /* background:#5aa7f6; */
-    /* border: 2px solid #fff; */
     box-shadow: 0 0 20px #000;
 }
 .iconera{
     background: #D81159;
 }
+/* dark*/
+.Dark{
+    background:#000;
+}
+.Dark .modal div,.Dark .row_buttons,.Dark .boton:not(.icono){
+    background-color: #44393e;
+}
+
+.Dark .icono.full {
+    background-color: #000;
+}
+.Dark .boton.activo{
+    background:#e0cdcd;
+    color:#000
+}
+
+.Dark .iconera{
+    background: #000000;
+}
+/* light /*/
+.Light{
+    background:#ddd;
+    color:#000
+}
+.Light .modal div,.Light  .row_buttons,.Light  .boton:not(.icono){
+    background-color: #eae9ea;
+}
+
+.Light .icono.full {
+    background-color: #3a3838;
+}
+.Light .boton.activo{
+    background:#e0cdcd;
+    color:#000
+}
+
+.Light .iconera{
+    background: #000000;
+    filter:invert(1);
+}
+
+/* color */
+
+/* light /*/
+.Color{
+    background:#25389c;
+  
+}
+.Color .modal div,.Color  .row_buttons,.Color  .boton:not(.icono){
+    background-color: #169e1e;
+}
+
+.Color .icono.full {
+    background-color: #773c0b;
+}
+.Color .boton.activo{
+    background:#80e01c;
+
+}
+
+.Color .iconera{
+    background: #ec4f13;
+
+}
+
