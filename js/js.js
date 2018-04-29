@@ -204,12 +204,15 @@ $("#panel_sesiones .boton").removeClass("activo");
 }
 
 function suma(valor,variable) {
+console.log("sumo");
     window[variable] += Number(valor);
-    $("#" + variable + " h2").html(window["texto_" + variable] + window[variable]);
+    console.log(window[variable]);
+    if (  window[variable]<0)   window[variable]=0
 }
 function tema(valor){
     theme+=Number(valor);
-    //if (theme>txt_themes.lenght) theme=0;
+    console.log(txt_themes.length+" "+theme);
+    if (theme>(txt_themes.length-1)) {console.log("pata");theme=0}
     $("#wrap").removeClass();
      $("#wrap").addClass(txt_themes[theme]);
     refresh();
