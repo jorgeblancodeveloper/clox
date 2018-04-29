@@ -40,10 +40,10 @@ body {
     height: 100vh;
     overflow:hidden;
     width:100%;
-    /* display: flex; */
-    /* align-items:  center; */
-    background: #381D2A;
-    color: #ffffff;
+    display: flex;
+    align-items:  center;
+            background: #381D2A;
+            color: #ffffff;
 }
 @media (min-width: 400px) {
   body {
@@ -76,8 +76,8 @@ input{
     height: calc(100% - 60px);
     flex-direction:  column;
     display: flex;
-    /* justify-content: space-between; */
-    /* overflow: hidden; */
+    justify-content: space-between;
+        overflow: hidden;
 }
 
 .row_buttons, .boton{
@@ -142,13 +142,13 @@ content: "";
 
 }
 #wrap {
-     /* overflow:hidden; */
-     width: 100%;
-     transform: translatex(-50%);
-     height: 100%;
-     left: 50%;
-     position: fixed;
-     bottom: 0;
+     overflow:hidden;
+    width: 100%;
+    transform: translatex(-50%);
+    height: 100%;
+    left: 50%;
+    position: fixed;
+    bottom: 0;
 }
 
 .row_buttons h2 {
@@ -224,7 +224,7 @@ content: "";
     background-size: auto 40%;
     background-repeat:  no-repeat;
     background-position: center center;
-    /* overflow:hidden; */
+overflow:hidden;
 }
 
 .home .icono{
@@ -274,16 +274,15 @@ content: "";
 .panel{
      position: absolute;
      width: 100%;
-     margin-left: 50%;
      height: calc(100% - 60px);
      transform: translate(0% ,200%);
      transition: all cubic-bezier(0.43, -0.01, 0.58, 1) 0.6s;
-     /* max-width: 500px; */
+     max-width: 450px;
      pointer-events:  none;
 }
 
 .home #panel_main, .config #panel_config, .sonido #panel_sonido, .sesiones #panel_sesiones, .trainer #panel_trainer{
-    transform: translate(-50%, 0);
+    transform: translate(0, 0);
     /* pointer-events:  all; */
 }
 .modal{position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.3);display: flex;align-items: center;justify-content: center;flex-direction: column;z-index: 999;display: none;/* opacity: 0; */transition: all 0.6s ease-in-out;}
@@ -325,7 +324,7 @@ content: "";
 }
 
 .iconera{
-    /* position:relative; */
+    position:relative;
     display: flex;
 }
 
@@ -339,7 +338,7 @@ content: "";
 }
 #button_go{
     text-align:left;
-    padding-left: 18%;
+    padding-left:25%;
     padding-top: 30vh;
     width: 100%;
 }
