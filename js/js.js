@@ -18,6 +18,8 @@ var txt_sonidos = ["sirena", "campana", "dong","buzzer","slap","timbre"]
 var txt_preavisos = ["ninguno","Asalto", "Descanso", "Asalto y descanso"]
 var txt_themes = ["Estandar","Dark","Light", "Color"]
 
+
+
 var sesion = {
     sesiones: [{
             nombre: "combate",
@@ -70,21 +72,17 @@ $("body,html").css("height", height);
     if (localStorage.getItem("data")) {
         sesion = JSON.parse(localStorage.getItem("data"))
     }
-    populate();
-
+    sesiones_populate();
     $("#panel_main .boton").click(function(e) {
         suma($(this).attr("data-value"), $(this).parent().attr("id"));
           click.play();
           refresh();
     });
-
     $("#panel_sonido .boton").click(function(e) {
         sonido($(this).attr("data-value"), $(this).parent().attr("id"));
     });
     $("#panel_config #theme .boton").click(function(e) {
-       console.log("clic");
         tema($(this).attr("data-value"));
-
     });
     $("#button_go").click(function() {
         $("body").addClass("clock");
@@ -147,7 +145,6 @@ function set_shadows(){
  element=$("#panel_sesiones .botonera");
    if ($("#panel_sesiones .botonera").scrollTop() > 0) {
             $("#panel_sesiones .botonera").addClass("shadow_top");
-              console.log("hagp scrol");
         } else {
             $("#panel_sesiones .botonera").removeClass("shadow_top");
         }
@@ -155,7 +152,6 @@ function set_shadows(){
         if ($("#panel_sesiones .botonera").scrollTop() - $("#panel_sesiones .botonera").height() == $("#panel_sesiones .botonera").outerHeight()) {
             //alert("bottom!");
         }
-    
 }
 
 function remove(ses) {
@@ -166,11 +162,11 @@ function remove(ses) {
     set_shadows();
 };
 
-function populate() {
+function sesiones_populate() {
     var node = "";
     for (var i = 0; i < sesion.sesiones.length; i++) {
         node += "<div class='boton' onclick='activa_sesion($(this))'>" + sesion.sesiones[i].nombre;
-        node += "<p>rounds: " + sesion.sesiones[i].rounds + " de " + sesion.sesiones[i].time_round + "m descanso: " + sesion.sesiones[i].time_stop + "m </br> Preaviso de " + sesion.sesiones[i].alert + "</p>";
+        node += "<p>Rounds: " + sesion.sesiones[i].rounds + " de " + sesion.sesiones[i].time_round + "m descanso: " + sesion.sesiones[i].time_stop + "m </br> Preaviso de " + sesion.sesiones[i].alert + "</p>";
         node += "<div class='remove'  onclick='remove($(this).parent())'></div></div>";
     }
     $("#panel_sesiones .botonera").html(node);

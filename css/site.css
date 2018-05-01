@@ -29,13 +29,21 @@ a, a:hover, a:active, a:visited {
     src: local('Share Tech Mono'), local('ShareTechMono-Regular'), url(https://fonts.gstatic.com/s/sharetechmono/v7/J7aHnp1uDWRBEqV98dVQztYldFcLowEFA87Heg.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
+/* latin */
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v16/ieVl2ZhZI2eCN5jzbjEETS9weq8-19K7DQk6YvM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 body {
     font-size: 6vw;
     line-height:1.2;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Share Tech Mono';
+   
+    font-family: 'Roboto Condensed';
     font-weight: bold;
     height: 100vh;
     overflow:hidden;
@@ -200,6 +208,7 @@ content: "";
     display: none;
     transition: background 0.3s ease-in-out;
     z-index: 99;
+    font-family: 'Share Tech Mono';
 }
 
 #clock h1 {
@@ -277,7 +286,7 @@ overflow:hidden;
      height: calc(100% - 60px);
      transform: translate(0% ,200%);
      transition: all cubic-bezier(0.43, -0.01, 0.58, 1) 0.6s;
-     max-width: 450px;
+     /* max-width: 450px; */
      pointer-events:  none;
 }
 
@@ -329,7 +338,7 @@ overflow:hidden;
 }
 
 
-@media (orientation: landscape) {
+@media (orientation: landscape) {/*
 #main{
         align-items: flex-end;
 }
@@ -342,8 +351,8 @@ overflow:hidden;
     padding-top: 30vh;
     width: 100%;
 }
-}
-/*---   theme ´´´´/*/
+*/}
+/*---   theme Â´Â´Â´Â´/*/
 
 
 .modal div, .row_buttons, .boton:not(.icono){

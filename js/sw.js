@@ -1,9 +1,10 @@
-var cacheName = 'hello-world-page';
+var cacheName = 'Clox';
 var filesToCache = [
   '/',
   './index.html',
   './css/site.css',
-  './js/js.js'
+  './js/js.js',
+  './js/jquery-3.2.1.min.js',
   './img/close.png',
   './img/config.png',
   './img/play.png',
