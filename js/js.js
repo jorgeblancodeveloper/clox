@@ -14,10 +14,9 @@ var texto_sonido_descanso = "Descanso: ";
 var texto_sonido_preaviso = "Preaviso: ";
 var texto_sonido_fin = "Fin combate: ";
 var texto_theme = "Theme: ";
-var txt_sonidos = ["sirena", "campana", "dong","buzzer","slap","timbre"]
-var txt_preavisos = ["ninguno","Asalto", "Descanso", "Asalto y descanso"]
-var txt_themes = ["Estandar","Dark","Light", "Color"]
-
+var txt_sonidos = ["sirena", "campana", "dong","buzzer","slap","timbre"];
+var txt_preavisos = ["ninguno","Asalto", "Descanso", "Asalto y descanso"];
+var txt_themes = ["Estandar","Dark","Light", "Color"];
 
 
 var sesion = {
@@ -44,9 +43,6 @@ var sesion = {
         },
     ]
 };
-
-
-
 
 var sonido_asaltos = 1;
 var sonido_descanso = 0;
@@ -166,7 +162,7 @@ function sesiones_populate() {
     var node = "";
     for (var i = 0; i < sesion.sesiones.length; i++) {
         node += "<div class='boton' onclick='activa_sesion($(this))'>" + sesion.sesiones[i].nombre;
-        node += "<p>Rounds: " + sesion.sesiones[i].rounds + " de " + sesion.sesiones[i].time_round + "m descanso: " + sesion.sesiones[i].time_stop + "m </br> Preaviso de " + sesion.sesiones[i].alert + "</p>";
+        node += "<p>" + sesion.sesiones[i].rounds + " de " + sesion.sesiones[i].time_round + "m Descanso: " + sesion.sesiones[i].time_stop + "m  Preaviso de " + sesion.sesiones[i].alert + "</p>";
         node += "<div class='remove'  onclick='remove($(this).parent())'></div></div>";
     }
     $("#panel_sesiones .botonera").html(node);
@@ -177,7 +173,7 @@ function sesiones_populate() {
 function fillnode(index, clase) {
     var node = "";
     node += "<div class='boton " + clase + "' onclick='activa_sesion($(this))'>" + sesion.sesiones[index].nombre;
-    node += "<p>rounds: " + sesion.sesiones[index].rounds + " de " + sesion.sesiones[index].time_round + "m descanso: " + sesion.sesiones[index].time_stop + "m </br> Preaviso de " + txt_preavisos[sesion.sesiones[index].alert] + "</p>";
+    node += "<p>" + sesion.sesiones[index].rounds + " de " + sesion.sesiones[index].time_round + "m Descanso: " + sesion.sesiones[index].time_stop + "m  Preaviso de " + txt_preavisos[sesion.sesiones[index].alert] + "</p>";
     node += "<div class='remove' onclick='remove($(this).parent())'></div></div>";
     set_shadows();
     return node;
@@ -198,9 +194,7 @@ $("#panel_sesiones .boton").removeClass("activo");
  refresh();
     click.play();
 }
-
 function suma(valor,variable) {
-console.log("sumo");
     window[variable] += Number(valor);
     console.log(window[variable]);
     if (  window[variable]<0)   window[variable]=0
@@ -220,11 +214,9 @@ function sonido(valor, variable) {
     $("#" + variable + " h2").html(window["texto_" + variable] + txt_sonidos[window[variable]]);
     sonido[window[variable]].play();
 }
-
 function round() {
     temp_asaltos = asaltos;
 }
-
 function countdown(minutes, howrounds) {
     seconds = 60;
     $("#clock #rounds").html(((asaltos - howrounds) + 1) + " de " + asaltos);
@@ -237,8 +229,6 @@ function countdown(minutes, howrounds) {
         counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
         if ((seconds==30) && (current_minutes==0) && (!$("body").hasClass("descanso")) && ((preaviso==1) || (preaviso==3))) {  sonido[sonido_preaviso].play();console.log("preaviso")}
         if ((seconds==10) && ($("body").hasClass("descanso")) && ((preaviso==2) || (preaviso==3))) {  sonido[sonido_preaviso].play();console.log("preaviso")}
-
-
         if (seconds > 0) {
             crono = setTimeout(tick, 100);
         } else {
@@ -252,7 +242,6 @@ function countdown(minutes, howrounds) {
                     $("body").addClass("descanso");
                      sonido[sonido_descanso].play();
                     countdown(tiempo_descanso, howrounds);
-                      
                 } else {
                     howrounds--;
                     $("body").removeClass("descanso");

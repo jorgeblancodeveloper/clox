@@ -95,6 +95,9 @@ input{
 .boton{
        pointer-events:  all;
 }
+.sesiones #panel_sesiones .botonera{
+    pointer-events:all;
+}
 .botonera{
         display: flex;
         flex-direction: column-reverse;
@@ -130,11 +133,10 @@ input{
     height: 70px;
     width: 100%;
     top: 0;
-    position: absolute;
+    position: fixed;
     z-index: 999;
     opacity:0;
-    transition:all 0.6s linear;
-
+   transition:opacity 0.6s linear;
 }
 #panel_sesiones  .botonera.shadow_top:before{
 opacity:1;
@@ -247,7 +249,7 @@ content: "";
    /* position:absolute; */
    transform:translate3d(0,100px,0);
    width: calc(100% - 20px);
-   transition:all 0.5s linear;
+   transition:transform 0.5s linear;
    height: 100%;
    text-align:  center;
    background-size: auto 100%;
@@ -286,7 +288,7 @@ content: "";
      width: 100%;
      height: calc(100% - 60px);
      transform: translate3d(0% ,200%,0);
-     transition: all cubic-bezier(0.43, -0.01, 0.58, 1) 0.6s;
+     transition: transform cubic-bezier(0.43, -0.01, 0.58, 1) 0.6s;
      /* max-width: 450px; */
      pointer-events:  none;
 }
@@ -295,7 +297,7 @@ content: "";
     transform: translate3d(0, 0,0);
     /* pointer-events:  all; */
 }
-.modal{position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.3);display: flex;align-items: center;justify-content: center;flex-direction: column;z-index: 999;display: none;/* opacity: 0; */transition: all 0.6s ease-in-out;}
+.modal{position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.3);display: flex;align-items: center;justify-content: center;flex-direction: column;z-index: 999;display: none;/* opacity: 0; */transition: opacity 0.6s ease-in-out;}
 .modal.on{
     display:flex;
     opacity: 1;
@@ -304,7 +306,6 @@ content: "";
     text-align:center;
     padding:.4em;
     margin:0.5em;
-    transition: all 0.6s linear;
     border-radius:8px;
 }
 
@@ -353,7 +354,7 @@ content: "";
     width: 100%;
 }
 */}
-/*---   theme Â´Â´Â´Â´/*/
+/*---   theme Ã‚Â´Ã‚Â´Ã‚Â´Ã‚Â´/*/
 
 
 .modal div, .row_buttons, .boton:not(.icono){
