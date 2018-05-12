@@ -1,441 +1,393 @@
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+     margin: 0;
+     padding: 0;
+     border: 0;
+     font-size: 100%;
+     font: inherit;
+     vertical-align: baseline;
 }
-
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-    display: block;
+ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+     display: block;
 }
-
-a, a:hover, a:active, a:visited {
-    text-decoration: none;
-    color: #bbb;
+ a, a:hover, a:active, a:visited {
+     text-decoration: none;
+     color: #bbb;
 }
-
-* {
-    box-sizing: border-box;
+ * {
+     box-sizing: border-box;
 }
-
-@font-face {
-    font-family: 'Share Tech Mono';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Share Tech Mono'), local('ShareTechMono-Regular'), url(https://fonts.gstatic.com/s/sharetechmono/v7/J7aHnp1uDWRBEqV98dVQztYldFcLowEFA87Heg.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ @font-face {
+     font-family: 'Share Tech Mono';
+     font-style: normal;
+     font-weight: 400;
+     src: local('Share Tech Mono'), local('ShareTechMono-Regular'), url(https://fonts.gstatic.com/s/sharetechmono/v7/J7aHnp1uDWRBEqV98dVQztYldFcLowEFA87Heg.woff2) format('woff2');
+     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin */
-@font-face {
-  font-family: 'Roboto Condensed';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v16/ieVl2ZhZI2eCN5jzbjEETS9weq8-19K7DQk6YvM.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ @font-face {
+     font-family: 'Roboto Condensed';
+     font-style: normal;
+     font-weight: 400;
+     src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v16/ieVl2ZhZI2eCN5jzbjEETS9weq8-19K7DQk6YvM.woff2) format('woff2');
+     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-body {
-    font-size: 6vw;
-    line-height:1.2;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-   
-    font-family: 'Roboto Condensed';
-    font-weight: bold;
-    height: 100vh;
-    overflow:hidden;
-    width:100%;
-    display: flex;
-    align-items:  center;
-            background: #381D2A;
-            color: #ffffff;
-}
-@media (min-width: 400px) {
-  body {
-    font-size:20px;
-  }
-}
-
-h1 {
-    font-size: 6em;
-}
-
-.info{
-    padding: 0.3em 2em  0;
-}
-.panel{
-    display:flex;
-    flex-direction: column-reverse;
-}
-
-/* centrados flex */
-input{
-    padding:0.2em;
-    border-radius:5px;
-    border-width:0;
-    margin:1em;
-    font-size:0.8em
-}
-
-#main{
-    height: calc(100% - 60px);
-    flex-direction:  column;
-    display: flex;
-    justify-content: space-between;
-        overflow: hidden;
-}
-
-.row_buttons, .boton{
-    display:flex;
-    height: 3em;
-}
-.boton{
-       pointer-events:  all;
-}
-.sesiones #panel_sesiones .botonera{
-    pointer-events:all;
-}
-.botonera{
-        display: flex;
-        flex-direction: column-reverse;
-        height: auto;
-        position:  relative;
-        width: 100%;
-       /*filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));*/
-        flex: 1;
-        overflow: scroll;
-        bottom: 0;
-        pointer-events:  none;
-}
-
-.disabled{
-   pointer-events:none;
-   color: rgba(255,255,255,0.3)
-}
-
-#button_go{
-    text-align:center;
-    padding-top:10vh
-}
-.sesiones #button_go{
-    opacity:0.2;
-}
-#panel_sesiones{
-    flex-direction:column;
-}
-
-#panel_sesiones .botonera:before{
-    content: "";
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
-    height: 70px;
-    width: 100%;
-    top: 0;
-    position: fixed;
-    z-index: 999;
-    opacity:0;
-   transition:opacity 0.6s linear;
-}
-#panel_sesiones  .botonera.shadow_top:before{
-opacity:1;
-}
-#panel_sesiones  .botonera.shadow_bottom:after{
-content: "";
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
-    height: 70px;
-    width: 100%;
-    bottom: 0;
-    position: absolute;
-    z-index: 9;
-
-}
-#wrap {
+ body {
+     font-size: 6vw;
+     line-height:1.2;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     font-family: 'Roboto Condensed';
+     font-weight: bold;
+     height: 100vh;
      overflow:hidden;
-    width: 100%;
-    transform: translate3d(-50%,0 ,0);
-    height: 100%;
-    left: 50%;
-    position: fixed;
-    bottom: 0;
+     width:100%;
+     display: flex;
+     align-items: center;
+     background: #381D2A;
+     color: #ffffff;
+}
+ @media (min-width: 400px) {
+     body {
+         font-size:20px;
+    }
+}
+ h1 {
+     font-size: 6em;
+}
+ .info{
+     padding: 0.3em 2em 0;
+}
+ .panel{
+     display:flex;
+     flex-direction: column-reverse;
 }
 
-.row_buttons h2 {
-    flex: 4;
-    align-items: center;
-    justify-content: center;
-    display:  flex;
+ input{
+     padding:0.2em;
+     border-radius:5px;
+     border-width:0;
+     margin:1em;
+     font-size:0.8em 
 }
-
-.boton {
-    transition:all ease-in-out 0.5s;
-    box-shadow: 0 0 30px #00000038 inset;
-    flex: 1;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction:  column;
-    min-height: 60px;
-    max-height: 80px;
-    position:relative;
-    z-index: 99;
+ #main{
+     height: calc(100% - 60px);
+     flex-direction: column;
+     display: flex;
+     justify-content: space-between;
+     overflow: hidden;
 }
-.getout{
-    opacity:0;
-    height:0;
-    min-height:0;
-   flex:0;
-    filter: brightness(0);
+ .row_buttons, .boton{
+     display:flex;
+     height: 3em;
 }
-.remove{
-        background-image:url("../img/close.png");
-        width:40px;
-        height: calc(100% - 1px);
-        background-size: 100% auto;
-        position: absolute;
-        right: 0;
-        background-size: auto 40%;
-        background-repeat:  no-repeat;
-        background-position:  center;
-        background-color: rgba(0,0,0,0.5);
+ .boton{
+     pointer-events: all;
 }
-#clock {
-    width: 100%;
-    height: 100%;
-    position:absolute;
-    top: 0;
-    left: 0;
-    background: green;
-    display: none;
-    transition: background 0.3s ease-in-out;
-    z-index: 99;
-    font-family: 'Share Tech Mono';
+ .sesiones #panel_sesiones .botonera{
+     pointer-events:all;
 }
-
-#clock h1 {
-    height: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+ .botonera{
+     display: flex;
+     flex-direction: column-reverse;
+     height: auto;
+     position: relative;
+     width: 100%;
+    /*filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    */
+     flex: 1;
+     overflow: scroll;
+     bottom: 0;
+     pointer-events: none;
 }
-
-.clock #clock {
-    display: block;
+ .disabled{
+     pointer-events:none;
+     color: rgba(255,255,255,0.3) 
 }
-.descanso #clock{
-    background:red;
+ #button_go{
+     text-align:center;
+     padding-top:10vh 
 }
-
-.icono {
-    transition: all 0.6s cubic-bezier(0.65, 0.04, 0.3, 0.96);
-    width: 25%;
-    /* background-image: url(../img/config.png); */
-    height: 100%;
-    z-index: 9;
-    background-size: auto 40%;
-    background-repeat:  no-repeat;
-    background-position: center center;
-    overflow:hidden;
+ .sesiones #button_go{
+     opacity:0.2;
 }
-
-.home .icono{
-    flex: 0.25;
+ #panel_sesiones{
+     flex-direction:column;
+}
+ #panel_sesiones .botonera:before{
+     content: "";
+     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+     height: 70px;
+     width: 100%;
+     top: 0;
+     position: fixed;
+     z-index: 999;
+     opacity:0;
+     transition:opacity 0.6s linear;
+}
+ #panel_sesiones .botonera.shadow_top:before{
+     opacity:1;
+}
+ #panel_sesiones .botonera.shadow_bottom:after{
+     content: "";
+     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+     height: 70px;
+     width: 100%;
+     bottom: 0;
+     position: absolute;
+     z-index: 9;
+}
+ #wrap {
+     overflow:hidden;
+     width: 100%;
+     transform: translate3d(-50%,0 ,0);
+     height: 100%;
+     left: 50%;
+     position: fixed;
+     bottom: 0;
+}
+ .row_buttons h2 {
+     flex: 4;
+     align-items: center;
+     justify-content: center;
+     display: flex;
+}
+ .boton {
+     transition:all ease-in-out 0.5s;
+     box-shadow: 0 0 30px #00000038 inset;
+     flex: 1;
+     align-items: center;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     min-height: 60px;
+     max-height: 80px;
+     position:relative;
+     z-index: 99;
+}
+ .getout{
+     opacity:0;
+     height:0;
+     min-height:0;
+     flex:0;
+     filter: brightness(0);
+}
+ .remove{
+     background-image:url("../img/close.png");
+     width:40px;
+     height: calc(100% - 1px);
+     background-size: 100% auto;
+     position: absolute;
+     right: 0;
+     background-size: auto 40%;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-color: rgba(0,0,0,0.5);
+}
+ #clock {
+     width: 100%;
+     height: 100%;
+     position:absolute;
+     top: 0;
+     left: 0;
+     background: green;
+     display: none;
+     transition: background 0.3s ease-in-out;
+     z-index: 99;
+     font-family: 'Share Tech Mono';
+}
+ #clock h1 {
+     height: 80%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+ .clock #clock {
+     display: block;
+}
+ .descanso #clock{
+     background:red;
+}
+ .icono {
+     transition: all 0.6s cubic-bezier(0.65, 0.04, 0.3, 0.96);
+     width: 25%;
+     height: 100%;
+     z-index: 9;
+     background-size: auto 40%;
+     background-repeat: no-repeat;
+     background-position: center center;
+     overflow:hidden;
+}
+ .home .icono{
+     flex: 0.25;
 }
  .icono{
-    flex:0;
+     flex:0;
 }
-.icono h2{
-   /* position:absolute; */
-   transform:translate3d(0,100px,0);
-   width: calc(100% - 20px);
-   transition:transform 0.5s linear;
-   height: 100%;
-   text-align:  center;
-   background-size: auto 100%;
-   font-size: 1.2em;
-   background-image: url("../img/close.png");
-   background-repeat: no-repeat;
-   background-position: right;
+ .icono h2{
+     transform:translate3d(0,100px,0);
+     width: calc(100% - 20px);
+     transition:transform 0.5s linear;
+     height: 100%;
+     text-align: center;
+     background-size: auto 100%;
+     font-size: 1.2em;
+     background-image: url("../img/close.png");
+     background-repeat: no-repeat;
+     background-position: right;
 }
-.icono.full {
-    width: 100%;
-    z-index: 9999999;
-    background-size: auto 20px;
-    background-position: 10px 10px;
-    pointer-events: all;
-    flex: 2;
+ .icono.full {
+     width: 100%;
+     z-index: 9999999;
+     background-size: auto 20px;
+     background-position: 10px 10px;
+     pointer-events: all;
+     flex: 2;
 }
-.icono.full h2{
-    transform:translate3d(0,0,0)
+ .icono.full h2{
+     transform:translate3d(0,0,0) 
 }
-#config.icono {
-    background-image:url("../img/config.png");
+ #config.icono {
+     background-image:url("../img/config.png");
 }
-#sonido.icono {
-    background-image:url("../img/sonido.png");
+ #sonido.icono {
+     background-image:url("../img/sonido.png");
 }
-#trainer.icono{
-
-    background-image: url(../img/play.png);
-
+ #trainer.icono{
+     background-image: url(../img/play.png);
 }
-#sesiones.icono {
-    background-image:url("../img/save.png");
+ #sesiones.icono {
+     background-image:url("../img/save.png");
 }
-.panel{
+ .panel{
      position: absolute;
      width: 100%;
      height: calc(100% - 60px);
      transform: translate3d(0% ,200%,0);
      transition: transform cubic-bezier(0.43, -0.01, 0.58, 1) 0.6s;
-     /* max-width: 450px; */
-     pointer-events:  none;
+     pointer-events: none;
 }
-
-.home #panel_main, .config #panel_config, .sonido #panel_sonido, .sesiones #panel_sesiones, .trainer #panel_trainer{
-    transform: translate3d(0, 0,0);
-    /* pointer-events:  all; */
+ .home #panel_main, .config #panel_config, .sonido #panel_sonido, .sesiones #panel_sesiones, .trainer #panel_trainer{
+     transform: translate3d(0, 0,0);
 }
-.modal{position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.3);display: flex;align-items: center;justify-content: center;flex-direction: column;z-index: 999;display: none;/* opacity: 0; */transition: opacity 0.6s ease-in-out;}
-.modal.on{
-    display:flex;
-    opacity: 1;
-}
-.modal div{
-    text-align:center;
-    padding:.4em;
-    margin:0.5em;
-    border-radius:8px;
-}
-
-#panel_sesiones>.boton{
-    flex: 0.2;
-    text-align: center;
-    z-index: 9999;
-}
-#panel_sesiones .boton p{font-size: 0.7em;/* margin: 0.5em; */}
-.float_boton{
-    padding: 0.5em;
-    text-transform: uppercase;
-    width: 92%;
-    text-align: center;
-    font-size: 3em;
-    border-radius: 0.4em;
-    background:rgba(0,0,0,0.7);
-    margin: auto;
-}
-
-#rounds{
+ .modal{
     position: absolute;
-    font-size: 4em;
-    top: 2vh;
-    width:100%;
-    text-align:center;
-}
-
-.iconera{
-    position:relative;
-    display: flex;
-}
-
-
-@media (orientation: landscape) {/*
-#main{
-        align-items: flex-end;
-}
-.panel{
-    width:50%;
-}
-#button_go{
-    text-align:left;
-    padding-left:25%;
-    padding-top: 30vh;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 999;
+    display: none;
+    transition: opacity 0.6s ease-in-out;
 }
-*/}
-/*---   theme Ã‚Â´Ã‚Â´Ã‚Â´Ã‚Â´/*/
-
-
-.modal div, .row_buttons, .boton:not(.icono){
-    background-color: #8F2D56;
+ .modal.on{
+     display:flex;
+     opacity: 1;
+     pointer-events: all;
 }
-
-.icono.full {
-    background-color: #000;
+ .modal div{
+     text-align:center;
+     padding:.4em;
+     margin:0.5em;
+     border-radius:8px;
 }
-.boton.activo{
-    background:red;
+ #panel_sesiones>.boton{
+     flex: 0.2;
+     text-align: center;
+     z-index: 9999;
 }
-
-.modal div{
-    box-shadow: 0 0 20px #000;
+ #panel_sesiones .boton p{
+    font-size: 0.7em;
 }
-.iconera{
-    background: #D81159;
+ .float_boton{
+     padding: 0.5em;
+     text-transform: uppercase;
+     width: 92%;
+     text-align: center;
+     font-size: 3em;
+     border-radius: 0.4em;
+     background:rgba(0,0,0,0.7);
+     margin: auto;
+}
+ #rounds{
+     position: absolute;
+     font-size: 4em;
+     top: 2vh;
+     width:100%;
+     text-align:center;
+}
+ .iconera{
+     position:relative;
+     display: flex;
+}
+ .modal div, .row_buttons, .boton:not(.icono){
+     background-color: #8F2D56;
+}
+ .icono.full {
+     background-color: #000;
+}
+ .boton.activo{
+     background:red;
+}
+ .modal div{
+     box-shadow: 0 0 20px #000;
+}
+ .iconera{
+     background: #D81159;
 }
 /* dark*/
-.Dark{
-    background:#000;
+ .Dark{
+     background:#000;
 }
-.Dark .modal div,.Dark .row_buttons,.Dark .boton:not(.icono){
-    background-color: #44393e;
+ .Dark .modal div,.Dark .row_buttons,.Dark .boton:not(.icono){
+     background-color: #44393e;
 }
-
-.Dark .icono.full {
-    background-color: #000;
+ .Dark .icono.full {
+     background-color: #000;
 }
-.Dark .boton.activo{
-    background:#e0cdcd;
-    color:#000
+ .Dark .boton.activo{
+     background:#e0cdcd;
+     color:#000 
 }
-
-.Dark .iconera{
-    background: #000000;
+ .Dark .iconera{
+     background: #000000;
 }
-/* light /*/
-.Light{
-    background:#ddd;
-    color:#000
+/* light 
+/*/
+ .Light{
+     background:#ddd;
+     color:#000 
 }
-.Light .modal div,.Light  .row_buttons,.Light  .boton:not(.icono){
-    background-color: #eae9ea;
+ .Light .modal div,.Light .row_buttons,.Light .boton:not(.icono){
+     background-color: #eae9ea;
 }
-
-.Light .icono.full {
-    background-color: #3a3838;
+ .Light .icono.full {
+     background-color: #3a3838;
 }
-.Light .boton.activo{
-    background:#e0cdcd;
-    color:#000
+ .Light .boton.activo{
+     background:#e0cdcd;
+     color:#000 
 }
-
-.Light .iconera{
-    background: #000000;
-    filter:invert(1);
+ .Light .iconera{
+     background: #000000;
+     filter:invert(1);
 }
-
-/* color */
-
-/* light /*/
-.Color{
-    background:#25389c;
-  
+ .Color{
+     background:#25389c;
 }
-.Color .modal div,.Color  .row_buttons,.Color  .boton:not(.icono){
-    background-color: #169e1e;
+ .Color .modal div,.Color .row_buttons,.Color .boton:not(.icono){
+     background-color: #169e1e;
 }
-
-.Color .icono.full {
-    background-color: #773c0b;
+ .Color .icono.full {
+     background-color: #773c0b;
 }
-.Color .boton.activo{
-    background:#80e01c;
-
+ .Color .boton.activo{
+     background:#80e01c;
 }
-
-.Color .iconera{
-    background: #ec4f13;
-
+ .Color .iconera{
+     background: #ec4f13;
 }
-
+ 

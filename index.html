@@ -1,123 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta content="IE=edge" http-equiv="X-UA-Compatible">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="theme-color" content="#008000"/>
-      <link rel="manifest" href="manifest.json">
-      <link rel="stylesheet" media="screen" href="css/site.css">
-      <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-      <script src="js/js.js"></script>
-   </head>
-   <body class="home">
 
-      <div id="wrap">
-               <div id="clock">
-         <div id="rounds">4</div>
-         <h1 id="counter">tiempo</h1>
-         <div class="float_boton info pause">II</div>
-      </div>
-         <div id="main">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#008000" />
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" media="screen" href="css/site.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/js.js"></script>
+</head>
+
+<body class="home">
+    <div id="wrap">
+        <div id="clock">
+            <div id="rounds">4</div>
+            <h1 id="counter">tiempo</h1>
+            <div class="float_boton info pause">II</div>
+        </div>
+        <div id="main">
             <div id="button_go">
-               <h1>GO</h1>
+                <h1>GO</h1>
             </div>
             <div id="panel_main" class="panel">
                 <div class="botonera">
-               <div class="row_buttons" id="asaltos">
-                  <div class="boton" data-value="-1">-</div>
-                  <h2>Asaltos </h2>
-                  <div class="boton" data-value="1">+</div>
-               </div>
-               <div class="row_buttons"  id="tiempo_asaltos">
-                  <div class="boton" data-value="-1">-</div>
-                  <h2>tiempo asaltos</h2>
-                  <div class="boton" data-value="1">+</div>
-               </div>
-               <div class="row_buttons" id="tiempo_descanso">
-                  <div class="boton" data-value="-1">-</div>
-                  <h2>descanso</h2>
-                  <div class="boton" data-value="1">+</div>
-               </div>
-               <div class="row_buttons" id="preaviso">
-                  <div class="boton" data-value="-1">-</div>
-                  <h2>Asaltos</h2>
-                  <div class="boton" data-value="1">+</div>
-               </div>
-            </div>
+                    <div class="row_buttons" id="asaltos">
+                        <div class="boton" data-value="-1">-</div>
+                        <h2>Asaltos </h2>
+                        <div class="boton" data-value="1">+</div>
+                    </div>
+                    <div class="row_buttons" id="tiempo_asaltos">
+                        <div class="boton" data-value="-30">-</div>
+                        <h2>tiempo asaltos</h2>
+                        <div class="boton" data-value="30">+</div>
+                    </div>
+                    <div class="row_buttons" id="tiempo_descanso">
+                        <div class="boton" data-value="-10">-</div>
+                        <h2>descanso</h2>
+                        <div class="boton" data-value="10">+</div>
+                    </div>
+                    <div class="row_buttons" id="preaviso">
+                        <div class="boton" data-value="-1">-</div>
+                        <h2>Asaltos</h2>
+                        <div class="boton" data-value="1">+</div>
+                    </div>
+                </div>
             </div>
             <div id="panel_config" class="panel">
-               <div class="botonera">
-                  <div class="row_buttons disabled" id="idioma">
-                     <div class="boton" data-value="-1">-</div>
-                     <h2>Idioma: Español </h2>
-                     <div class="boton" data-value="1">+</div>
-                  </div>
-               <div class="row_buttons" id="theme">
-                     <div class="boton" data-value="-1">-</div>
-                     <h2>plantilla </h2>
-                     <div class="boton" data-value="1">+</div>
-                  </div>
-               </div>
+                <div class="botonera">
+                    <div class="row_buttons disabled" id="idioma">
+                        <div class="boton" data-value="-1">-</div>
+                        <h2>Idioma: Español </h2>
+                        <div class="boton" data-value="1">+</div>
+                    </div>
+                    <div class="row_buttons" id="theme">
+                        <div class="boton" data-value="-1">-</div>
+                        <h2>plantilla </h2>
+                        <div class="boton" data-value="1">+</div>
+                    </div>
+                </div>
             </div>
             <div id="panel_sonido" class="panel">
-               <div class="botonera">
-                  <div class="row_buttons"  id="sonido_asaltos">
-                     <div class="boton" data-value="-1">-</div>
-                     <h2>Asalto:</h2>
-                     <div class="boton" data-value="1">+</div>
-                  </div>
-                  <div class="row_buttons" id="sonido_descanso">
-                     <div class="boton" data-value="-1">-</div>
-                     <h2>Descanso</h2>
-                     <div class="boton" data-value="1">+</div>
-                  </div>
-                  <div class="row_buttons" id="sonido_fin">
-                     <div class="boton" data-value="-1">-</div>
-                     <h2>Fin combate</h2>
-                     <div class="boton" data-value="1">+</div>
-                  </div>
-                  <div class="row_buttons" id="sonido_preaviso">
-                     <div class="boton" data-value="-1">-</div>
-                     <h2>preaviso</h2>
-                     <div class="boton" data-value="1">+</div>
-                  </div>
-               </div>
+                <div class="botonera">
+                    <div class="row_buttons" id="sonido_asaltos">
+                        <div class="boton" data-value="-1">-</div>
+                        <h2>Asalto:</h2>
+                        <div class="boton" data-value="1">+</div>
+                    </div>
+                    <div class="row_buttons" id="sonido_descanso">
+                        <div class="boton" data-value="-1">-</div>
+                        <h2>Descanso</h2>
+                        <div class="boton" data-value="1">+</div>
+                    </div>
+                    <div class="row_buttons" id="sonido_fin">
+                        <div class="boton" data-value="-1">-</div>
+                        <h2>Fin combate</h2>
+                        <div class="boton" data-value="1">+</div>
+                    </div>
+                    <div class="row_buttons" id="sonido_preaviso">
+                        <div class="boton" data-value="-1">-</div>
+                        <h2>preaviso</h2>
+                        <div class="boton" data-value="1">+</div>
+                    </div>
+                </div>
             </div>
             <div id="panel_sesiones" class="panel">
-               <div class="modal"><div>Nombre de la sesion<input id="name" type="text" name="name" value="Sesión"></div></div>
-               <div class="botonera">
-                 
-               </div>
-                 <div class="boton" id="add_sesion">Añadir sesion</div>
+                <div class="modal">
+                    <div>Nombre de la sesion<input id="name" type="text" name="name" value="Sesión"></div>
+                </div>
+                <div class="botonera">
+
+                </div>
+                <div class="boton" id="add_sesion">Añadir sesion</div>
             </div>
             <div id="panel_trainer" class="panel">
-               <div class="botonera">
-                  <div class="row_buttons">
-                     <div class="boton disabled" data-value="1">Añadir sesion</div>
-                  </div>
-               </div>
+                <div class="botonera">
+                    <div class="row_buttons">
+                        <div class="boton disabled" data-value="1">Añadir sesion</div>
+                    </div>
+                </div>
             </div>
-         </div>
-         <div class="iconera ">
-            <div class="boton icono" id="config"> <h2>Configuración</h2>
+        </div>
+        <div class="iconera ">
+            <div class="boton icono" id="config">
+                <h2>Configuración</h2>
             </div>
-            <div class="boton icono" id="sonido"> <h2>Sonido</h2>
+            <div class="boton icono" id="sonido">
+                <h2>Sonido</h2>
             </div>
-            <div class="boton icono" id="trainer"><h2>Trainer</h2>
+            <div class="boton icono" id="trainer">
+                <h2>Trainer</h2>
             </div>
-            <div class="boton icono" id="sesiones"> <h2>Sesiones</h2>
+            <div class="boton icono" id="sesiones">
+                <h2>Sesiones</h2>
             </div>
-           
-         </div>
-      </div>
-      <script>
-         if('serviceWorker' in navigator) {
-           navigator.serviceWorker.register('js/sw.js')
-             .then(function() {
-                   console.log('Service Worker Registered');
-             });
-         }
-      </script>
-   </body>
+        </div>
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('js/sw.js')
+                .then(function() {
+                    console.log('Service Worker Registered');
+                });
+        }
+    </script>
+</body>
+
 </html>

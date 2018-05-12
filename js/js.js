@@ -1,6 +1,6 @@
 var asaltos = 4;
-var tiempo_asaltos = 3;
-var tiempo_descanso = 1;
+var tiempo_asaltos = 180;
+var tiempo_descanso = 60;
 var preaviso = 0;
 var seconds = 60;
 var crono;
@@ -18,7 +18,6 @@ var txt_sonidos = ["sirena", "campana", "dong","buzzer","slap","timbre"];
 var txt_preavisos = ["ninguno","Asalto", "Descanso", "Asalto y descanso"];
 var txt_themes = ["Estandar","Dark","Light", "Color"];
 
-
 var sesion = {
     sesiones: [{
             nombre: "combate",
@@ -35,7 +34,7 @@ var sesion = {
             alert: 0
         },
         {
-            nombre: "entrene",
+            nombre: "entrenamiento",
             rounds: 4,
             time_round: 3,
             time_stop: 60,
@@ -202,7 +201,7 @@ function suma(valor,variable) {
 function tema(valor){
     theme+=Number(valor);
     console.log(txt_themes.length+" "+theme);
-    if (theme>(txt_themes.length-1)) {console.log("pata");theme=0}
+    if (theme>(txt_themes.length-1)) {theme=0}
     $("#wrap").removeClass();
      $("#wrap").addClass(txt_themes[theme]);
     refresh();
@@ -230,7 +229,7 @@ function countdown(minutes, howrounds) {
         if ((seconds==30) && (current_minutes==0) && (!$("body").hasClass("descanso")) && ((preaviso==1) || (preaviso==3))) {  sonido[sonido_preaviso].play();console.log("preaviso")}
         if ((seconds==10) && ($("body").hasClass("descanso")) && ((preaviso==2) || (preaviso==3))) {  sonido[sonido_preaviso].play();console.log("preaviso")}
         if (seconds > 0) {
-            crono = setTimeout(tick, 100);
+            crono = setTimeout(tick, 1000);
         } else {
             if (mins > 1) {
                 countdown(mins - 1, howrounds);
@@ -254,13 +253,25 @@ function countdown(minutes, howrounds) {
     }
     tick();
 }
-
+function formatsec(tiempo){
+var minutes = Math.floor( tiempo / 60 );
+var seconds = tiempo % 60;
+ 
+//Anteponiendo un 0 a los minutos si son menos de 10 
+minutes = minutes < 10 ?  + minutes : minutes;
+ 
+//Anteponiendo un 0 a los segundos si son menos de 10 
+seconds = seconds < 10 ? '0' + seconds : seconds;
+ 
+var result = minutes + ":" + seconds;  // 161:30
+return result;
+}
 function refresh() {
-    $("#tiempo_asaltos h2").html(window["texto_tiempo_asaltos"] + tiempo_asaltos);
+    $("#tiempo_asaltos h2").html(window["texto_tiempo_asaltos"] + formatsec(tiempo_asaltos));
     $("#asaltos h2").html(window["texto_asaltos"] + asaltos);
-    $("#tiempo_descanso h2").html(window["texto_tiempo_descanso"] + tiempo_descanso);
+    $("#tiempo_descanso h2").html(window["texto_tiempo_descanso"] + formatsec(tiempo_descanso));
     if (preaviso>(txt_preavisos.length-1)) {preaviso=0}
-      if (preaviso<0) {preaviso=(txt_preavisos.length-1)}
+    if (preaviso<0) {preaviso=(txt_preavisos.length-1)}
     $("#theme h2").html(window["texto_theme"] +  txt_themes[theme]);
     $("#preaviso h2").html(window["texto_preaviso"] + txt_preavisos[preaviso]);
     $("#sonido_asaltos h2").html(window["texto_sonido_asaltos"] + txt_sonidos[sonido_asaltos]);
