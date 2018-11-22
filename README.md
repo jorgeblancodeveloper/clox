@@ -1,2 +1,2 @@
 # clox
-Cronometro de boxeo
+Cronometro de boxeo (en desarrollo)
